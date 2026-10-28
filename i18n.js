@@ -2,16 +2,18 @@
 const EN = {
   "nav.services": "Services",
   "nav.process": "Process",
-  "nav.training": "Training",
+  "nav.training": "Live Training",
   "nav.sectors": "Industries",
   "nav.faq": "FAQ",
+  "nav.blog": "Blog",
+  "nav.home": "Home",
   "nav.cta": "Free Consultation",
 
   "hero.eyebrow": "Meta Ads Agency",
   "hero.title": "We build Meta ad systems that <em>drive sales</em>.",
   "hero.lead": "We set up your Instagram and Facebook ads for messages, leads, sign-ups and sales — not just impressions. Strategy, creative, setup and transparent reporting, all in one place.",
   "hero.cta1": "Free Consultation",
-  "hero.cta2": "Explore Services",
+  "hero.cta2": "Join the Live Training",
   "hero.stat1": "e-commerce stores managed",
   "hero.stat2": "people per live training class",
   "hero.stat3": "transparent reporting",
@@ -82,6 +84,35 @@ const EN = {
   "sec5.t": "Retail",
   "sec5.d": "Store traffic and online sales",
 
+  "blog.eyebrow": "Blog",
+  "blog.title": "Notes on Meta advertising",
+  "blog.all": "All posts →",
+  "blog.read": "Read",
+  "blog.min": "min read",
+  "blog.pageTitle": "Practical notes on Meta ads",
+  "blog.pageLead": "What we see in real ad accounts every day: why ads don't bring messages, how to spend budget right, and what to fix first.",
+  "blog.back": "← All posts",
+  "blog.ctaTitle": "Want us to look at your ad account?",
+  "blog.ctaText": "The first consultation is free. Message us on WhatsApp and we'll review your account together.",
+  "blog.ctaBtn": "Message on WhatsApp",
+
+  "form.title": "Free consultation request",
+  "form.sub": "Fill in the form and we'll get back to you shortly.",
+  "form.name": "Full name",
+  "form.phone": "Phone",
+  "form.business": "Business name",
+  "form.sector": "Industry",
+  "form.other": "Other",
+  "form.service": "Service you're interested in",
+  "form.message": "Your message (optional)",
+  "form.consent": "I agree to my details being processed so that you can contact me (KVKK).",
+  "form.submit": "Send Request",
+  "form.sending": "Sending…",
+  "form.ok": "Thank you! Your request has been received, we'll contact you shortly.",
+  "form.wa": "Opening WhatsApp so you can send your request…",
+  "form.err": "Please fill in your name, phone and the consent box.",
+  "form.fail": "Something went wrong. Please message us on WhatsApp.",
+
   "faq.eyebrow": "FAQ",
   "faq.title": "Frequently asked questions",
   "q1": "Is the first consultation paid?",
@@ -103,11 +134,11 @@ const EN = {
 
 const META = {
   tr: {
-    title: "Glorion Digital — Meta Reklam Ajansı",
+    title: "Glorion Digital — Meta Reklam Ajansı ve Canlı Meta Reklam Eğitimi",
     desc: "Glorion Digital: Meta reklamlarıyla satış getiren sistemler kuruyoruz. Meta reklam yönetimi, e-ticaret büyüme ve canlı Meta reklam eğitimi."
   },
   en: {
-    title: "Glorion Digital — Meta Ads Agency",
+    title: "Glorion Digital — Meta Ads Agency & Live Meta Ads Training",
     desc: "Glorion Digital builds Meta ad systems that drive sales. Meta ads management, e-commerce growth and live Meta ads training."
   }
 };
