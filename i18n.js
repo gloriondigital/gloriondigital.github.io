@@ -106,7 +106,7 @@ const EN = {
   "form.other": "Other",
   "form.service": "Service you're interested in",
   "form.message": "Your message (optional)",
-  "form.consent": "I agree to my details being processed so that you can contact me (KVKK).",
+  "form.consent": "I have read the <a href=\"en/privacy/\" target=\"_blank\" rel=\"noopener\">Privacy Notice (KVKK)</a> and agree to my details being processed so that you can contact me.",
   "form.submit": "Send Request",
   "form.sending": "Sending…",
   "form.ok": "Thank you! Your request has been received, we'll contact you shortly.",

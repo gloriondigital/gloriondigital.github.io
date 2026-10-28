@@ -140,6 +140,7 @@ def footer(lang):
       <a href="tel:{PHONE}">0 543 494 55 28</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <a href="{IG}" target="_blank" rel="noopener">Instagram</a>
+      <a href="{'/kvkk/' if lang == 'tr' else '/en/privacy/'}">{'KVKK' if lang == 'tr' else 'Privacy'}</a>
     </span>
   </div>
 </footer>
@@ -162,7 +163,7 @@ def write(path, text):
     path.write_text(text, encoding="utf-8")
 
 # ---- clean old output ----
-for d in [ROOT / "en"]:
+for d in [ROOT / "en", ROOT / "kvkk"]:
     if d.exists(): shutil.rmtree(d)
 for f in (ROOT / "blog").glob("*"):
     if f.name != "posts.js":
@@ -305,3 +306,120 @@ write(ROOT / "llms.txt", llms)
 (ROOT / ".nojekyll").touch()
 
 print(f"Built {len(POSTS)} posts x 2 languages; sitemap {sm.count('<url>')} urls")
+
+# ---------------------------------------------------------------------------
+# KVKK / Privacy pages
+# ---------------------------------------------------------------------------
+LEGAL_UPDATED = "2026-10-28"
+KVKK = {
+ "tr": dict(url="/kvkk/", title="KVKK Aydınlatma Metni",
+  desc="Glorion Digital web sitesi üzerinden toplanan kişisel verilerin işlenmesine ilişkin 6698 sayılı KVKK kapsamında aydınlatma metni.",
+  body=f"""
+<p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, <strong>{BRAND}</strong> (“biz”) tarafından bu web sitesi üzerinden toplanan kişisel verilerin hangi amaçla ve nasıl işlendiği konusunda sizi bilgilendirmek için hazırlanmıştır.</p>
+<h2>1. Veri sorumlusu</h2>
+<p>Veri sorumlusu {BRAND}'dir. Bize <a href="mailto:{EMAIL}">{EMAIL}</a> adresinden ve <a href="tel:{PHONE}">0 543 494 55 28</a> numarasından ulaşabilirsiniz.</p>
+<h2>2. İşlenen kişisel veriler</h2>
+<ul>
+<li><strong>Kimlik ve iletişim:</strong> ad soyad, telefon numarası, e-posta adresi.</li>
+<li><strong>Talep bilgileri:</strong> işletme veya okul adı, sektör, ilgilendiğiniz hizmet ve mesajınız.</li>
+<li><strong>İşlem bilgisi:</strong> formun gönderildiği tarih, sayfa ve dil tercihi.</li>
+</ul>
+<p>Formlarda sizden özel nitelikli kişisel veri (sağlık, din, biyometrik veri vb.) istemiyoruz; lütfen mesaj alanına bu tür bilgiler yazmayın.</p>
+<h2>3. İşleme amaçları</h2>
+<ul>
+<li>Ücretsiz ön görüşme, hizmet ve eğitim taleplerinize dönüş yapmak,</li>
+<li>Talep ettiğiniz örnek eğitim dokümanını size sunmak,</li>
+<li>Eğitim dönemleri ve hizmetlerimiz hakkında, talebinizle ilgili bilgi vermek,</li>
+<li>Hukuki yükümlülüklerimizi yerine getirmek ve olası uyuşmazlıklarda haklarımızı korumak.</li>
+</ul>
+<h2>4. Hukuki sebepler ve toplama yöntemi</h2>
+<p>Verileriniz, web sitemizdeki formlar ve WhatsApp üzerinden, elektronik ortamda toplanır. KVKK'nın 5. maddesinde yer alan; bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması, veri sorumlusunun meşru menfaati ve hukuki yükümlülüklerin yerine getirilmesi sebeplerine; yurt dışına aktarım gerektiren işlemler için ise KVKK'nın 9. maddesi kapsamında açık rızanıza dayanılarak işlenir.</p>
+<h2>5. Aktarım</h2>
+<p>Verileriniz satılmaz ve reklam amacıyla üçüncü kişilerle paylaşılmaz. Hizmetin sunulabilmesi için aşağıdaki hizmet sağlayıcılar kullanılır; bu sağlayıcıların sunucuları yurt dışında bulunabilir:</p>
+<ul>
+<li><strong>Google (Google E-Tablolar / Apps Script):</strong> form kayıtlarının saklanması,</li>
+<li><strong>WhatsApp (Meta):</strong> WhatsApp üzerinden iletişime geçmeyi seçmeniz halinde mesajlaşma,</li>
+<li><strong>GitHub Pages:</strong> web sitesinin barındırılması (teknik erişim kayıtları),</li>
+<li><strong>Google Fonts:</strong> sitedeki yazı tiplerinin yüklenmesi (IP adresi gibi teknik veriler).</li>
+</ul>
+<p>Ayrıca kanunen yetkili kamu kurum ve kuruluşlarına, talep halinde ve mevzuatın izin verdiği ölçüde aktarım yapılabilir.</p>
+<h2>6. Çerezler ve yerel depolama</h2>
+<p>Sitemizde reklam veya analiz çerezi kullanılmamaktadır. Dil tercihiniz ve örnek PDF formunu doldurduğunuz bilgisi, tekrar sormamak için yalnızca tarayıcınızın yerel depolama alanında tutulur ve bize iletilmez. Tarayıcı ayarlarınızdan bu kayıtları istediğiniz zaman silebilirsiniz.</p>
+<h2>7. Saklama süresi</h2>
+<p>Verileriniz, işleme amacının gerektirdiği süre boyunca ve her halükarda ilgili mevzuatta öngörülen süreler kadar saklanır; süre sonunda silinir, yok edilir veya anonim hale getirilir.</p>
+<h2>8. Haklarınız</h2>
+<p>KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini, şartları oluştuğunda silinmesini veya yok edilmesini isteme, bu işlemlerin aktarılan üçüncü kişilere bildirilmesini isteme, münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonuç çıkmasına itiraz etme ve kanuna aykırı işleme nedeniyle zarara uğramanız halinde zararın giderilmesini talep etme haklarına sahipsiniz.</p>
+<h2>9. Başvuru</h2>
+<p>Haklarınıza ilişkin taleplerinizi, kimliğinizi doğrulayacak bilgilerle birlikte <a href="mailto:{EMAIL}">{EMAIL}</a> adresine iletebilirsiniz. Başvurunuz en geç 30 gün içinde ücretsiz olarak sonuçlandırılır.</p>
+"""),
+ "en": dict(url="/en/privacy/", title="Privacy Notice (KVKK)",
+  desc="Privacy notice under Turkish Personal Data Protection Law No. 6698 (KVKK) for personal data collected through the Glorion Digital website.",
+  body=f"""
+<p>This notice explains, under Turkish Personal Data Protection Law No. 6698 (“KVKK”), how <strong>{BRAND}</strong> (“we”) processes personal data collected through this website and for what purposes. The Turkish version is the binding text.</p>
+<h2>1. Data controller</h2>
+<p>The data controller is {BRAND}. You can reach us at <a href="mailto:{EMAIL}">{EMAIL}</a> or <a href="tel:{PHONE}">+90 543 494 55 28</a>.</p>
+<h2>2. Personal data we process</h2>
+<ul>
+<li><strong>Identity and contact:</strong> full name, phone number, email address.</li>
+<li><strong>Request details:</strong> business or school name, industry, the service you're interested in and your message.</li>
+<li><strong>Transaction data:</strong> date, page and language of the submission.</li>
+</ul>
+<p>We do not ask for special categories of personal data (health, religion, biometrics, etc.); please do not include such information in the message field.</p>
+<h2>3. Purposes</h2>
+<ul>
+<li>Responding to your consultation, service and training requests,</li>
+<li>Providing the sample training document you requested,</li>
+<li>Informing you about classes and services related to your request,</li>
+<li>Meeting legal obligations and protecting our rights in potential disputes.</li>
+</ul>
+<h2>4. Legal grounds and collection method</h2>
+<p>Data is collected electronically through our website forms and WhatsApp. It is processed under Article 5 of KVKK (necessity for entering into or performing a contract, legitimate interest, legal obligations), and, for transfers abroad, on the basis of your explicit consent under Article 9.</p>
+<h2>5. Transfers</h2>
+<p>We do not sell your data or share it with third parties for advertising. The following providers are used to run the service, and their servers may be located outside Turkey:</p>
+<ul>
+<li><strong>Google (Google Sheets / Apps Script):</strong> storing form submissions,</li>
+<li><strong>WhatsApp (Meta):</strong> messaging, if you choose to contact us on WhatsApp,</li>
+<li><strong>GitHub Pages:</strong> website hosting (technical access logs),</li>
+<li><strong>Google Fonts:</strong> loading fonts (technical data such as IP address).</li>
+</ul>
+<p>Data may also be shared with authorized public authorities upon request, as permitted by law.</p>
+<h2>6. Cookies and local storage</h2>
+<p>We do not use advertising or analytics cookies. Your language preference and whether you've filled in the sample PDF form are stored only in your browser's local storage so we don't ask again; they are never sent to us. You can clear them in your browser settings at any time.</p>
+<h2>7. Retention</h2>
+<p>Data is kept for as long as the purpose requires and in any case for the periods set by applicable law, after which it is deleted, destroyed or anonymized.</p>
+<h2>8. Your rights</h2>
+<p>Under Article 11 of KVKK you have the right to learn whether your data is processed, request information about it, learn the purpose and whether it is used accordingly, know the third parties it is transferred to, request correction of incomplete or inaccurate data, request deletion or destruction where conditions are met, request that such actions be notified to third parties, object to outcomes against you arising solely from automated analysis, and claim compensation for damages caused by unlawful processing.</p>
+<h2>9. How to apply</h2>
+<p>Send your request, with information that verifies your identity, to <a href="mailto:{EMAIL}">{EMAIL}</a>. Requests are answered free of charge within 30 days at the latest.</p>
+"""),
+}
+
+for lang in ("tr", "en"):
+    k = KVKK[lang]; t = T[lang]
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebPage", "name": k["title"], "url": f"{SITE}{k['url']}", "inLanguage": lang,
+         "dateModified": LEGAL_UPDATED, "publisher": {"@id": f"{SITE}/#org"}}, ORG]}
+    page = head(lang, f"{k['title']} | {BRAND}", k["desc"], k["url"], KVKK["tr"]["url"], KVKK["en"]["url"], ld) \
+        + header(lang, KVKK["tr"]["url"], KVKK["en"]["url"]) + f'''
+<main>
+  <article class="post">
+    <div class="wrap narrow">
+      <nav class="crumbs" aria-label="breadcrumb"><a href="{home_url(lang)}">{t['home']}</a><span>/</span><span>{k['title']}</span></nav>
+      <h1 class="post-title">{k['title']}</h1>
+      <p class="post-meta"><span>{t['updated']}: <time datetime="{LEGAL_UPDATED}">{fmt_date(LEGAL_UPDATED, lang)}</time></span></p>
+      <div class="prose legal">{k['body']}</div>
+    </div>
+  </article>
+</main>
+''' + footer(lang)
+    write(ROOT / k["url"].strip("/") / "index.html", page)
+
+# add legal pages to sitemap
+sm_path = ROOT / "sitemap.xml"
+smx = sm_path.read_text(encoding="utf-8").replace("</urlset>\n",
+    sm_url(KVKK["tr"]["url"], KVKK["en"]["url"], LEGAL_UPDATED)
+    + sm_url(KVKK["en"]["url"], KVKK["en"]["url"], LEGAL_UPDATED).replace(
+        f'hreflang="tr" href="{SITE}{KVKK["en"]["url"]}"', f'hreflang="tr" href="{SITE}{KVKK["tr"]["url"]}"')
+    + "</urlset>\n")
+sm_path.write_text(smx, encoding="utf-8")
+print("Built KVKK pages")

@@ -15,7 +15,7 @@
  * böylece Meta entegrasyonu bozulmaz.
  */
 const SHEET_NAME = "Web Sitesi";
-const HEADERS = ["Tarih", "Ad Soyad", "Telefon", "İşletme", "Sektör", "Hizmet", "Mesaj", "Dil", "Sayfa"];
+const HEADERS = ["Tarih", "Ad Soyad", "Telefon", "E-posta", "İşletme", "Sektör", "Hizmet", "Mesaj", "Dil", "Sayfa"];
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -33,7 +33,7 @@ function doPost(e) {
     const clean = v => String(v || "").slice(0, 1000).replace(/^[=+\-@]/, "'$&");
     sheet.appendRow([
       new Date(),
-      clean(p.name), clean(p.phone), clean(p.business), clean(p.sector),
+      clean(p.name), clean(p.phone), clean(p.email), clean(p.business), clean(p.sector),
       clean(p.service), clean(p.message), clean(p.language), clean(p.page)
     ]);
     return ok_();

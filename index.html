@@ -288,7 +288,7 @@
             <textarea name="message" rows="3"></textarea></label>
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="check full"><input type="checkbox" name="consent" required>
-            <span data-i18n="form.consent">Bilgilerimin benimle iletişime geçilmesi amacıyla işlenmesini kabul ediyorum (KVKK).</span></label>
+            <span data-i18n-html="form.consent"><a href="kvkk/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni okudum; bilgilerimin benimle iletişime geçilmesi amacıyla işlenmesini kabul ediyorum.</span></label>
         </div>
         <button type="submit" class="btn btn-gold btn-block" data-i18n="form.submit">Başvuruyu Gönder</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -321,9 +321,10 @@
     <div class="form-grid">
       <label class="full"><span><span class="lang-tr">Ad Soyad</span><span class="lang-en">Full name</span></span><input name="name" type="text" autocomplete="name" required></label>
       <label><span><span class="lang-tr">Telefon</span><span class="lang-en">Phone</span></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required></label>
-      <label><span><span class="lang-tr">İşletme / Okul (isteğe bağlı)</span><span class="lang-en">Business / School (optional)</span></span><input name="business" type="text" autocomplete="organization"></label>
+      <label><span><span class="lang-tr">E-posta</span><span class="lang-en">Email</span></span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="ornek@mail.com" required></label>
+      <label class="full"><span><span class="lang-tr">İşletme / Okul (isteğe bağlı)</span><span class="lang-en">Business / School (optional)</span></span><input name="business" type="text" autocomplete="organization"></label>
       <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="check full"><input type="checkbox" name="consent" required><span><span class="lang-tr">Bilgilerimin benimle iletişime geçilmesi amacıyla işlenmesini kabul ediyorum (KVKK).</span><span class="lang-en">I agree to my details being processed so that you can contact me (KVKK).</span></span></label>
+      <label class="check full"><input type="checkbox" name="consent" required><span><span class="lang-tr"><a href="kvkk/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>'ni okudum; bilgilerimin benimle iletişime geçilmesi amacıyla işlenmesini kabul ediyorum.</span><span class="lang-en">I have read the <a href="en/privacy/" target="_blank" rel="noopener">Privacy Notice (KVKK)</a> and agree to my details being processed so that you can contact me.</span></span></label>
     </div>
     <button type="submit" class="btn btn-gold btn-block"><span class="lang-tr">Gönder ve PDF'i İndir</span><span class="lang-en">Send & Download PDF</span></button>
     <p class="form-status" role="status" aria-live="polite"></p>
@@ -341,6 +342,7 @@
       <a href="tel:+905434945528">0 543 494 55 28</a>
       <a href="mailto:info.gloriondigital@gmail.com">info.gloriondigital@gmail.com</a>
       <a href="https://www.instagram.com/gloriondigital/" target="_blank" rel="noopener">Instagram</a>
+      <a href="kvkk/" data-href-tr="kvkk/" data-href-en="en/privacy/"><span class="lang-tr">KVKK</span><span class="lang-en">Privacy</span></a>
     </span>
   </div>
 </footer>

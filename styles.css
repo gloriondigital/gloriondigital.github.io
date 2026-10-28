@@ -325,3 +325,8 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 .pdf-close { position: absolute; top: 14px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
 .pdf-close:hover { color: var(--text); border-color: var(--gold); }
 @media (max-width: 560px) { .pdf-form { padding: 24px 18px; } .pdf-form h3 { font-size: 22px; } }
+
+.form-grid .check a { color: var(--gold-2); text-decoration: underline; text-underline-offset: 2px; }
+.prose.legal h2 { font-size: clamp(20px, 2.4vw, 24px); margin-top: 34px; }
+.prose.legal { font-size: 16.5px; }
+.prose.legal a { color: var(--gold-2); text-decoration: underline; text-underline-offset: 3px; }

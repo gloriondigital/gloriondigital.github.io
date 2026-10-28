@@ -168,9 +168,9 @@
     const pf = document.getElementById("pdfForm");
     const st = pf.querySelector(".form-status");
     const msg = {
-      tr: { err: "Lütfen ad soyad, telefon ve onay kutusunu doldurun.", sending: "Gönderiliyor…",
+      tr: { err: "Lütfen ad soyad, telefon, geçerli bir e-posta ve onay kutusunu doldurun.", sending: "Gönderiliyor…",
             ok: "Teşekkürler! PDF iniyor.", wa: "Teşekkürler! PDF iniyor; bilgilerinizi iletmek için WhatsApp açılıyor." },
-      en: { err: "Please fill in your name, phone and the consent box.", sending: "Sending…",
+      en: { err: "Please fill in your name, phone, a valid email and the consent box.", sending: "Sending…",
             ok: "Thank you! Your PDF is downloading.", wa: "Thank you! Your PDF is downloading; WhatsApp is opening to send your details." }
     };
     const m = k => (msg[current] || msg.tr)[k];
@@ -192,10 +192,11 @@
       const fd = new FormData(pf);
       if (fd.get("website")) return;
       const name = (fd.get("name") || "").trim(), phone = (fd.get("phone") || "").trim();
-      if (!name || phone.replace(/\D/g, "").length < 10 || !pf.consent.checked) {
+      const email = (fd.get("email") || "").trim();
+      if (!name || phone.replace(/\D/g, "").length < 10 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || !pf.consent.checked) {
         st.textContent = m("err"); st.dataset.kind = "err"; return;
       }
-      const data = { name, phone, business: (fd.get("business") || "").trim(), sector: "",
+      const data = { name, phone, email, business: (fd.get("business") || "").trim(), sector: "",
                      service: "Örnek PDF indirme", message: "Örnek eğitim PDF'ini indirdi", language: current, page: location.pathname };
       const btn = pf.querySelector('button[type="submit"]');
       btn.disabled = true; st.textContent = m("sending"); st.dataset.kind = "";
@@ -203,7 +204,7 @@
         try { await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) }); } catch (e) {}
         st.textContent = m("ok");
       } else {
-        const text = ["Merhaba, web sitenizden örnek eğitim PDF'ini indirdim.", `Ad Soyad: ${name}`, `Telefon: ${phone}`,
+        const text = ["Merhaba, web sitenizden örnek eğitim PDF'ini indirdim.", `Ad Soyad: ${name}`, `Telefon: ${phone}`, `E-posta: ${email}`,
                       data.business && `İşletme/Okul: ${data.business}`].filter(Boolean).join("\n");
         window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
         st.textContent = m("wa");
