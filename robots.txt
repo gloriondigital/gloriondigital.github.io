@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tools/
 
-Sitemap: https://gloriondigital.github.io/sitemap.xml
+Sitemap: https://gloriondigital.com/sitemap.xml

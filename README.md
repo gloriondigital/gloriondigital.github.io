@@ -1,6 +1,6 @@
 # Glorion Digital — Web Sitesi
 
-Yayın adresi: https://gloriondigital.github.io
+Yayın adresi: https://gloriondigital.com (yedek: https://gloriondigital.github.io)
 
 Statik site (HTML/CSS/JS). Türkçe varsayılan, İngilizce desteği var. CRM'den bağımsızdır.
 

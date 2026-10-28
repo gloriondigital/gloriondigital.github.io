@@ -10,7 +10,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from posts_data import POSTS  # noqa: E402
 
-SITE = "https://gloriondigital.github.io"   # change here when the custom domain is connected
+SITE = "https://gloriondigital.com"   # change here when the custom domain is connected
 BRAND = "Glorion Digital"
 WA = "https://wa.me/905434945528"
 PHONE = "+905434945528"
