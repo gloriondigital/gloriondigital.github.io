@@ -117,7 +117,7 @@
     const cio = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (!e.isIntersecting) return;
-        const el = e.target, end = Number(el.dataset.count), suf = el.dataset.suffix || "";
+        const el = e.target, end = Number(el.dataset.count), suf = "";
         const start = performance.now(), dur = 1200;
         const step = now => {
           const p = Math.min(1, (now - start) / dur);
@@ -128,7 +128,7 @@
         cio.unobserve(el);
       });
     }, { threshold: 0.6 });
-    counters.forEach(el => cio.observe(el));
+    counters.forEach(el => { el.textContent = "0"; cio.observe(el); });
   }
 
   // ---------- WhatsApp button follows the scroll (spring) ----------

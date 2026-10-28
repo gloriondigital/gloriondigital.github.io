@@ -17,7 +17,8 @@ const EN = {
   "hero.stat1": "e-commerce stores managed",
   "hero.stat2": "people per live training class",
   "hero.stat3": "transparent reporting",
-  "hero.stat3v": "100%",
+  "hero.stat4": "education institutions served",
+  "hero.stat5": "people trained",
 
   "card.title": "Campaign Summary",
   "card.r1": "Messages / Leads",
