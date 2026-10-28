@@ -265,7 +265,7 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 
 /* HERO TRAINING CARD */
 .train-card { display: block; border-color: rgba(212,169,78,.55); background: linear-gradient(165deg, rgba(212,169,78,.16), var(--surface) 55%); transition: transform .2s, box-shadow .2s; }
-.train-card:hover { transform: translateY(-4px); box-shadow: 0 40px 90px -30px rgba(212,169,78,.35); }
+
 .tc-kicker { color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
 .tc-title { font-family: var(--serif); font-weight: 500; font-size: 26px; line-height: 1.2; margin: 8px 0 18px; }
 .tc-list { list-style: none; display: grid; gap: 10px; font-size: 14.5px; color: var(--text); }
@@ -308,3 +308,10 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
   .logo-text { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .topbar { animation: none; } }
+
+/* Training card actions */
+.tc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.tc-actions .btn { flex: 1 1 auto; }
+.btn-pdf { gap: 8px; }
+.btn-pdf svg { flex: none; }
+.tc-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
