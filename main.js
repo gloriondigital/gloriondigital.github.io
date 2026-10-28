@@ -218,6 +218,84 @@
     });
   }
 
+  // ---------- Pointer effects (desktop, fine pointer, motion allowed) ----------
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  // Reading progress bar (all devices)
+  const bar = document.querySelector(".scroll-progress");
+  if (bar) {
+    const setBar = () => {
+      const h = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`;
+    };
+    addEventListener("scroll", setBar, { passive: true }); addEventListener("resize", setBar); setBar();
+  }
+
+  // Training seats fill one by one
+  const seats = document.querySelector(".tc-seats");
+  if (seats) {
+    if (reduce || !("IntersectionObserver" in window)) seats.classList.add("filled");
+    else new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { seats.classList.add("filled"); o.disconnect(); } }, { threshold: .6 }).observe(seats);
+  }
+
+  if (finePointer && !reduce) {
+    // Hero spotlight + parallax dots
+    const hero = document.querySelector(".hero");
+    const fx = hero && hero.querySelector(".hero-fx");
+    if (fx) {
+      let tx = .7, ty = .3, cx = tx, cy = ty, run = false;
+      const loop = () => {
+        cx += (tx - cx) * .08; cy += (ty - cy) * .08;
+        fx.style.setProperty("--mx", (cx * 100).toFixed(2) + "%");
+        fx.style.setProperty("--my", (cy * 100).toFixed(2) + "%");
+        fx.style.setProperty("--px", ((cx - .5) * -24).toFixed(2) + "px");
+        fx.style.setProperty("--py", ((cy - .5) * -24).toFixed(2) + "px");
+        if (Math.abs(tx - cx) > .001 || Math.abs(ty - cy) > .001) requestAnimationFrame(loop); else run = false;
+      };
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height;
+        if (!run) { run = true; requestAnimationFrame(loop); }
+      });
+      hero.addEventListener("pointerenter", () => fx.classList.add("on"));
+      hero.addEventListener("pointerleave", () => fx.classList.remove("on"));
+    }
+
+    // 3D tilt + glare on cards
+    document.querySelectorAll(".train-card, .card, .level, .post-card, .contact-item, .compare .col").forEach(el => {
+      el.classList.add("tilt");
+      let raf = null;
+      el.addEventListener("pointermove", e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        const max = el.classList.contains("train-card") ? 6 : 8;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          el.style.setProperty("--rx", ((.5 - y) * max).toFixed(2) + "deg");
+          el.style.setProperty("--ry", ((x - .5) * max).toFixed(2) + "deg");
+          el.style.setProperty("--gx", (x * 100).toFixed(1) + "%");
+          el.style.setProperty("--gy", (y * 100).toFixed(1) + "%");
+        });
+      });
+      el.addEventListener("pointerenter", () => el.classList.add("tilting"));
+      el.addEventListener("pointerleave", () => {
+        el.classList.remove("tilting");
+        el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg");
+      });
+    });
+
+    // Magnetic primary buttons
+    document.querySelectorAll(".btn-gold:not(.btn-block), .btn-ghost:not(.btn-sm)").forEach(btn => {
+      btn.classList.add("magnetic");
+      btn.addEventListener("pointermove", e => {
+        const r = btn.getBoundingClientRect();
+        btn.style.setProperty("--bx", ((e.clientX - r.left - r.width / 2) * .25).toFixed(1) + "px");
+        btn.style.setProperty("--by", ((e.clientY - r.top - r.height / 2) * .35).toFixed(1) + "px");
+      });
+      btn.addEventListener("pointerleave", () => { btn.style.setProperty("--bx", "0px"); btn.style.setProperty("--by", "0px"); });
+    });
+  }
+
   // Buttons that pre-select a service in the form
   document.querySelectorAll("[data-pick-service]").forEach(a => a.addEventListener("click", () => {
     const sel = document.querySelector('#leadForm select[name="service"]');
