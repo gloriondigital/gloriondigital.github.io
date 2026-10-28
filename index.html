@@ -87,7 +87,7 @@
         <span class="tc-seats" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
         <div class="tc-actions">
           <a href="#egitim" class="btn btn-gold btn-sm"><span class="lang-tr">Eğitimi İncele</span><span class="lang-en">See the Training</span></a>
-          <a href="assets/canli-meta-reklam-egitimi-ornek.pdf" download="Glorion-Digital-Meta-Reklam-Egitimi-Ornek.pdf" class="btn btn-ghost btn-sm btn-pdf">
+          <a href="#pdf-form" data-pdf-gate class="btn btn-ghost btn-sm btn-pdf">
             <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
             <span class="lang-tr">Örnek PDF'i İndir</span><span class="lang-en">Download Sample PDF</span>
           </a>
@@ -311,6 +311,24 @@
     </div>
   </section>
 </main>
+
+<dialog class="pdf-modal" id="pdfModal" aria-labelledby="pdfTitle">
+  <form class="pdf-form" id="pdfForm" method="dialog" novalidate>
+    <button type="button" class="pdf-close" data-close aria-label="Kapat">×</button>
+    <p class="tc-kicker"><span class="lang-tr">Ücretsiz örnek</span><span class="lang-en">Free sample</span></p>
+    <h3 id="pdfTitle"><span class="lang-tr">Örnek eğitim PDF'ini indirin</span><span class="lang-en">Download the sample training PDF</span></h3>
+    <p class="form-sub"><span class="lang-tr">Bilgilerinizi bırakın, PDF hemen insin. Eğitim dönemleri hakkında size de bilgi verelim.</span><span class="lang-en">Leave your details and the PDF downloads right away. We'll also let you know about upcoming classes.</span></p>
+    <div class="form-grid">
+      <label class="full"><span><span class="lang-tr">Ad Soyad</span><span class="lang-en">Full name</span></span><input name="name" type="text" autocomplete="name" required></label>
+      <label><span><span class="lang-tr">Telefon</span><span class="lang-en">Phone</span></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required></label>
+      <label><span><span class="lang-tr">İşletme / Okul (isteğe bağlı)</span><span class="lang-en">Business / School (optional)</span></span><input name="business" type="text" autocomplete="organization"></label>
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="check full"><input type="checkbox" name="consent" required><span><span class="lang-tr">Bilgilerimin benimle iletişime geçilmesi amacıyla işlenmesini kabul ediyorum (KVKK).</span><span class="lang-en">I agree to my details being processed so that you can contact me (KVKK).</span></span></label>
+    </div>
+    <button type="submit" class="btn btn-gold btn-block"><span class="lang-tr">Gönder ve PDF'i İndir</span><span class="lang-en">Send & Download PDF</span></button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
 
 <a class="wa-float" href="https://wa.me/905434945528" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>

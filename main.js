@@ -156,6 +156,67 @@
     }, { passive: true });
   }
 
+  // ---------- Sample PDF behind a short form ----------
+  const PDF_URL = "assets/canli-meta-reklam-egitimi-ornek.pdf";
+  const PDF_NAME = "Glorion-Digital-Meta-Reklam-Egitimi-Ornek.pdf";
+  const modal = document.getElementById("pdfModal");
+  const downloadPdf = () => {
+    const a = document.createElement("a");
+    a.href = PDF_URL; a.download = PDF_NAME; document.body.appendChild(a); a.click(); a.remove();
+  };
+  if (modal) {
+    const pf = document.getElementById("pdfForm");
+    const st = pf.querySelector(".form-status");
+    const msg = {
+      tr: { err: "Lütfen ad soyad, telefon ve onay kutusunu doldurun.", sending: "Gönderiliyor…",
+            ok: "Teşekkürler! PDF iniyor.", wa: "Teşekkürler! PDF iniyor; bilgilerinizi iletmek için WhatsApp açılıyor." },
+      en: { err: "Please fill in your name, phone and the consent box.", sending: "Sending…",
+            ok: "Thank you! Your PDF is downloading.", wa: "Thank you! Your PDF is downloading; WhatsApp is opening to send your details." }
+    };
+    const m = k => (msg[current] || msg.tr)[k];
+    let unlocked = false;
+    try { unlocked = localStorage.getItem("gd-pdf") === "1"; } catch (e) {}
+
+    document.querySelectorAll("[data-pdf-gate]").forEach(btn => btn.addEventListener("click", ev => {
+      ev.preventDefault();
+      if (unlocked) { downloadPdf(); return; }   // already filled the form before
+      st.textContent = ""; st.dataset.kind = "";
+      if (typeof modal.showModal === "function") modal.showModal(); else modal.setAttribute("open", "");
+      setTimeout(() => pf.name.focus(), 50);
+    }));
+    modal.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => modal.close()));
+    modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+
+    pf.addEventListener("submit", async ev => {
+      ev.preventDefault();
+      const fd = new FormData(pf);
+      if (fd.get("website")) return;
+      const name = (fd.get("name") || "").trim(), phone = (fd.get("phone") || "").trim();
+      if (!name || phone.replace(/\D/g, "").length < 10 || !pf.consent.checked) {
+        st.textContent = m("err"); st.dataset.kind = "err"; return;
+      }
+      const data = { name, phone, business: (fd.get("business") || "").trim(), sector: "",
+                     service: "Örnek PDF indirme", message: "Örnek eğitim PDF'ini indirdi", language: current, page: location.pathname };
+      const btn = pf.querySelector('button[type="submit"]');
+      btn.disabled = true; st.textContent = m("sending"); st.dataset.kind = "";
+      if (ENDPOINT) {
+        try { await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) }); } catch (e) {}
+        st.textContent = m("ok");
+      } else {
+        const text = ["Merhaba, web sitenizden örnek eğitim PDF'ini indirdim.", `Ad Soyad: ${name}`, `Telefon: ${phone}`,
+                      data.business && `İşletme/Okul: ${data.business}`].filter(Boolean).join("\n");
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+        st.textContent = m("wa");
+      }
+      st.dataset.kind = "ok";
+      unlocked = true;
+      try { localStorage.setItem("gd-pdf", "1"); } catch (e) {}
+      downloadPdf();
+      btn.disabled = false;
+      setTimeout(() => { modal.close(); pf.reset(); }, 2200);
+    });
+  }
+
   // Buttons that pre-select a service in the form
   document.querySelectorAll("[data-pick-service]").forEach(a => a.addEventListener("click", () => {
     const sel = document.querySelector('#leadForm select[name="service"]');

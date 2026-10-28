@@ -315,3 +315,13 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 .btn-pdf { gap: 8px; }
 .btn-pdf svg { flex: none; }
 .tc-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+/* PDF lead modal */
+.pdf-modal { border: 0; padding: 0; background: transparent; width: min(560px, calc(100% - 32px)); margin: auto; color: var(--text); }
+.pdf-modal::backdrop { background: rgba(5,5,7,.72); backdrop-filter: blur(4px); }
+.pdf-modal[open] { animation: rise .35s cubic-bezier(.2,.7,.2,1); }
+.pdf-form { position: relative; background: var(--surface); border: 1px solid rgba(212,169,78,.45); border-radius: 22px; padding: 30px; text-align: left; }
+.pdf-form h3 { font-family: var(--serif); font-weight: 500; font-size: 26px; line-height: 1.2; margin: 6px 0 6px; padding-right: 30px; }
+.pdf-close { position: absolute; top: 14px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
+.pdf-close:hover { color: var(--text); border-color: var(--gold); }
+@media (max-width: 560px) { .pdf-form { padding: 24px 18px; } .pdf-form h3 { font-size: 22px; } }
