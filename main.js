@@ -131,6 +131,31 @@
     counters.forEach(el => cio.observe(el));
   }
 
+  // ---------- WhatsApp button follows the scroll (spring) ----------
+  const wa = document.querySelector(".wa-float");
+  if (wa && !reduce) {
+    let lastY = window.scrollY, offset = 0, vel = 0, raf = null, idle = null;
+    const tick = () => {
+      // spring back toward 0
+      vel += -offset * 0.12;
+      vel *= 0.78;
+      offset += vel;
+      wa.style.setProperty("--wy", offset.toFixed(2) + "px");
+      wa.style.setProperty("--wr", (offset * -0.6).toFixed(2) + "deg");
+      if (Math.abs(offset) > 0.1 || Math.abs(vel) > 0.1) raf = requestAnimationFrame(tick);
+      else { wa.style.setProperty("--wy", "0px"); wa.style.setProperty("--wr", "0deg"); raf = null; }
+    };
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY, d = y - lastY; lastY = y;
+      // scrolling down pushes the button up a little, scrolling up pulls it down
+      offset = Math.max(-26, Math.min(26, offset - d * 0.35));
+      wa.classList.remove("wa-nudge");
+      if (!raf) raf = requestAnimationFrame(tick);
+      clearTimeout(idle);
+      idle = setTimeout(() => { void wa.offsetWidth; wa.classList.add("wa-nudge"); }, 220);
+    }, { passive: true });
+  }
+
   // Buttons that pre-select a service in the form
   document.querySelectorAll("[data-pick-service]").forEach(a => a.addEventListener("click", () => {
     const sel = document.querySelector('#leadForm select[name="service"]');
