@@ -94,9 +94,11 @@ const EN = {
   "a4": "No. The training moves from basics to practice on your own account, and small classes mean everyone gets attention.",
 
   "contact.title": "Let your ads start driving sales.",
-  "contact.lead": "Message us on Instagram for a free consultation or training details.",
-  "contact.cta1": "Message on Instagram",
-  "contact.cta2": "@gloriondigital"
+  "contact.lead": "Reach us on WhatsApp, by phone, email or Instagram for a free consultation or training details.",
+  "contact.cta1": "Message on WhatsApp",
+  "contact.cta2": "Message on Instagram",
+  "contact.phone": "Phone",
+  "contact.email": "Email"
 };
 
 const META = {

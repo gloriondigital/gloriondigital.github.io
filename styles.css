@@ -136,3 +136,18 @@ details p { color: var(--muted); margin-top: 12px; }
   .steps, .chips, .compare { grid-template-columns: 1fr; }
   .hero-stats { gap: 22px; }
 }
+
+/* CONTACT DETAILS */
+.contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 44px; text-align: left; }
+.contact-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; gap: 4px; transition: border-color .2s; min-width: 0; }
+.contact-item:hover { border-color: var(--gold); }
+.ci-label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.ci-value { font-size: 15px; overflow-wrap: anywhere; }
+.footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 10px 30px -8px rgba(0,0,0,.6); transition: transform .15s; }
+.wa-float:hover { transform: scale(1.06); }
+@media (max-width: 1000px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; gap: 10px; }
+}
