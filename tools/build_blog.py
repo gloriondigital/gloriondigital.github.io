@@ -317,7 +317,7 @@ KVKK = {
   body=f"""
 <p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, <strong>Gülsüm KABA (Glorion Digital)</strong> (“biz”) tarafından bu web sitesi üzerinden toplanan kişisel verilerin hangi amaçla ve nasıl işlendiği konusunda sizi bilgilendirmek için hazırlanmıştır.</p>
 <h2>1. Veri sorumlusu</h2>
-<p>Veri sorumlusu, <strong>Gülsüm KABA (Glorion Digital)</strong>'dır. Bize <a href="mailto:{EMAIL}">{EMAIL}</a> adresinden ve <a href="tel:{PHONE}">0 543 494 55 28</a> numarasından ulaşabilirsiniz.</p>
+<p>Veri sorumlusu, <strong>Gülsüm KABA (Glorion Digital)</strong>'dır.<br>Adres: Ortaköy Mahallesi, Diğerküme Evleri, 360 Sokak No:1A, Arslan Villaları, Menteşe/Muğla.<br>Bize <a href="mailto:{EMAIL}">{EMAIL}</a> adresinden ve <a href="tel:{PHONE}">0 543 494 55 28</a> numarasından ulaşabilirsiniz.</p>
 <h2>2. İşlenen kişisel veriler</h2>
 <ul>
 <li><strong>Kimlik ve iletişim:</strong> ad soyad, telefon numarası, e-posta adresi.</li>
@@ -357,7 +357,7 @@ KVKK = {
   body=f"""
 <p>This notice explains, under Turkish Personal Data Protection Law No. 6698 (“KVKK”), how <strong>Gülsüm KABA (Glorion Digital)</strong> (“we”) processes personal data collected through this website and for what purposes. The Turkish version is the binding text.</p>
 <h2>1. Data controller</h2>
-<p>The data controller is <strong>Gülsüm KABA (Glorion Digital)</strong>. You can reach us at <a href="mailto:{EMAIL}">{EMAIL}</a> or <a href="tel:{PHONE}">+90 543 494 55 28</a>.</p>
+<p>The data controller is <strong>Gülsüm KABA (Glorion Digital)</strong>.<br>Address: Ortaköy Mahallesi, Diğerküme Evleri, 360 Sokak No:1A, Arslan Villaları, Menteşe/Muğla, Türkiye.<br>You can reach us at <a href="mailto:{EMAIL}">{EMAIL}</a> or <a href="tel:{PHONE}">+90 543 494 55 28</a>.</p>
 <h2>2. Personal data we process</h2>
 <ul>
 <li><strong>Identity and contact:</strong> full name, phone number, email address.</li>
