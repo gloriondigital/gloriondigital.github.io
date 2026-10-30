@@ -380,6 +380,8 @@
       g("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
       track("consent_update", { consent: v });
       if (bar) { bar.remove(); bar = null; }
+      // Reload once so all measurement tags start cleanly with consent granted
+      if (granted) setTimeout(() => location.reload(), 150);
     };
     const show = () => {
       if (bar) return;
