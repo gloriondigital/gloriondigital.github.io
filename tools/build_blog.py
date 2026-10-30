@@ -149,7 +149,7 @@ def footer(lang):
     </span>
   </div>
 </footer>
-<script src="/main.js"></script>
+<script src="/main.js?v=20261030"></script>
 </body>
 </html>
 '''
