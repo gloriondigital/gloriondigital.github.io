@@ -60,7 +60,7 @@ def resolve_links(body, lang):
         target, text = m.group(1), m.group(2)
         if target == "services": href = anchor(lang, "hizmetler")
         elif target == "training": href = anchor(lang, "egitim")
-        elif target == "contact": href = anchor(lang, "iletisim")
+        elif target == "contact": href = anchor(lang, "basvuru")
         elif target.startswith("post:"): href = post_url(BY_KEY[target[5:]], lang)
         else: raise ValueError(target)
         return f'<a class="kw" href="{href}">{text}</a>'
@@ -128,7 +128,7 @@ def header(lang, alt_tr, alt_en):
         <a href="{alt_tr}" data-lang-link="tr" aria-pressed="{str(lang == 'tr').lower()}" hreflang="tr">TR</a>
         <a href="{alt_en}" data-lang-link="en" aria-pressed="{str(lang == 'en').lower()}" hreflang="en">EN</a>
       </div>
-      <a href="{anchor(lang, 'iletisim')}" class="btn btn-gold btn-sm">{t['cta']}</a>
+      <a href="{anchor(lang, 'basvuru')}" class="btn btn-gold btn-sm">{t['cta']}</a>
       <button class="burger" id="burger" aria-label="{t['menu']}" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
