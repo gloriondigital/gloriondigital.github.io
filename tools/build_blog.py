@@ -72,10 +72,14 @@ ORG = {
   "telephone": PHONE, "email": EMAIL, "areaServed": "TR", "sameAs": [IG],
 }
 
+GTM_HEAD = "<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-MHCS35X3');</script>\n<!-- End Google Tag Manager -->"
+GTM_BODY = '<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHCS35X3"\nheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->'
+
 def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
     return f'''<!doctype html>
 <html lang="{lang}" data-static="1">
 <head>
+{GTM_HEAD}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(title)}</title>
@@ -102,6 +106,7 @@ def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body>
+{GTM_BODY}
 '''
 
 def header(lang, alt_tr, alt_en):
