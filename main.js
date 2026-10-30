@@ -1,6 +1,8 @@
 (function () {
   const WA_NUMBER = (typeof WHATSAPP_NUMBER !== "undefined" && WHATSAPP_NUMBER) || "905434945528";
   const ENDPOINT = (typeof FORM_ENDPOINT !== "undefined" && FORM_ENDPOINT) || "";
+  // Analytics/pixel events via GTM dataLayer (no personal data is sent)
+  const track = (event, params) => { window.dataLayer = window.dataLayer || []; window.dataLayer.push(Object.assign({ event }, params || {})); };
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   // ---------- Blog cards on the homepage (both languages rendered; CSS shows the active one) ----------
@@ -210,6 +212,7 @@
         st.textContent = m("wa");
       }
       st.dataset.kind = "ok";
+      track("lead_form_submit", { form_name: "ornek_pdf", service: "Örnek PDF indirme", sector: "" });
       unlocked = true;
       try { localStorage.setItem("gd-pdf", "1"); } catch (e) {}
       downloadPdf();
@@ -337,6 +340,7 @@
           data.message && `Mesaj: ${data.message}`
         ].filter(Boolean).join("\n");
         show(t("form.wa"), "ok");
+        track("lead_form_submit", { form_name: "on_gorusme", service: data.service, sector: data.sector });
         window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
         return;
       }
@@ -347,6 +351,7 @@
         await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) });
         form.reset();
         show(t("form.ok"), "ok");
+        track("lead_form_submit", { form_name: "on_gorusme", service: data.service, sector: data.sector });
       } catch (e) {
         show(t("form.fail"), "err");
       } finally {
