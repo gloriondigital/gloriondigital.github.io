@@ -72,6 +72,7 @@ ORG = {
   "telephone": PHONE, "email": EMAIL, "areaServed": "TR", "sameAs": [IG],
 }
 
+GTM_CONSENT = "<!-- Consent Mode v2 (KVKK): analytics & ads off until the visitor accepts -->\n<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}\ngtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});\ntry{if(localStorage.getItem('gd-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}</script>\n"
 GTM_HEAD = "<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\nnew Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,'script','dataLayer','GTM-MHCS35X3');</script>\n<!-- End Google Tag Manager -->"
 GTM_BODY = '<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHCS35X3"\nheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>\n<!-- End Google Tag Manager (noscript) -->'
 
@@ -79,7 +80,7 @@ def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
     return f'''<!doctype html>
 <html lang="{lang}" data-static="1">
 <head>
-{GTM_HEAD}
+{GTM_CONSENT}{GTM_HEAD}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(title)}</title>
@@ -102,7 +103,7 @@ def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=20261030b">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -149,7 +150,7 @@ def footer(lang):
     </span>
   </div>
 </footer>
-<script src="/main.js?v=20261030"></script>
+<script src="/main.js?v=20261030b"></script>
 </body>
 </html>
 '''

@@ -360,6 +360,53 @@
     });
   }
 
+  // ---------- Cookie consent (KVKK) — drives Google Consent Mode v2 set in <head> ----------
+  (function () {
+    const KEY = "gd-consent";
+    const txt = {
+      tr: { msg: "Sitemizde, deneyiminizi ölçmek ve reklamlarımızı iyileştirmek için analiz ve reklam çerezleri (Google Analytics, Meta Pikseli) kullanıyoruz. Onay vermediğiniz sürece bu çerezler kullanılmaz.",
+            more: "KVKK Aydınlatma Metni", link: "/kvkk/", ok: "Kabul et", no: "Reddet", settings: "Çerez Ayarları" },
+      en: { msg: "We use analytics and advertising cookies (Google Analytics, Meta Pixel) to measure your experience and improve our ads. They are only used if you consent.",
+            more: "Privacy notice", link: "/en/privacy/", ok: "Accept", no: "Reject", settings: "Cookie settings" }
+    };
+    const L = () => txt[current] || txt.tr;
+    const get = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+    const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} };
+    const g = window.gtag || function () { (window.dataLayer = window.dataLayer || []).push(arguments); };
+    let bar = null;
+    const decide = granted => {
+      const v = granted ? "granted" : "denied";
+      set(v);
+      g("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+      track("consent_update", { consent: v });
+      if (bar) { bar.remove(); bar = null; }
+    };
+    const show = () => {
+      if (bar) return;
+      const t = L();
+      bar = document.createElement("div");
+      bar.className = "cookie-bar";
+      bar.setAttribute("role", "dialog");
+      bar.setAttribute("aria-label", t.settings);
+      bar.innerHTML = '<p>' + esc(t.msg) + ' <a href="' + t.link + '">' + esc(t.more) + '</a></p>' +
+        '<div class="cookie-actions"><button type="button" class="btn btn-ghost btn-sm" data-c="no">' + esc(t.no) + '</button>' +
+        '<button type="button" class="btn btn-gold btn-sm" data-c="ok">' + esc(t.ok) + '</button></div>';
+      bar.addEventListener("click", e => {
+        const b = e.target.closest("[data-c]");
+        if (b) decide(b.dataset.c === "ok");
+      });
+      document.body.appendChild(bar);
+    };
+    if (!get()) show();
+    // "Cookie settings" link in the footer to change the choice later
+    document.querySelectorAll(".footer-links").forEach(f => {
+      const a = document.createElement("a");
+      a.href = "#"; a.className = "cookie-settings"; a.textContent = L().settings;
+      a.addEventListener("click", e => { e.preventDefault(); show(); });
+      f.appendChild(a);
+    });
+  })();
+
   // ---------- In-page links: smooth scroll without adding #section to the address bar ----------
   const cleanUrl = () => history.replaceState(null, "", location.pathname + location.search);
   document.addEventListener("click", ev => {
