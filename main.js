@@ -359,4 +359,20 @@
       }
     });
   }
+
+  // ---------- In-page links: smooth scroll without adding #section to the address bar ----------
+  const cleanUrl = () => history.replaceState(null, "", location.pathname + location.search);
+  document.addEventListener("click", ev => {
+    const a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if (!a || ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey) return;
+    const id = a.getAttribute("href").slice(1);
+    if (!id) return;
+    const el = id === "top" ? null : document.getElementById(id);
+    if (id !== "top" && !el) return;
+    ev.preventDefault();
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); else window.scrollTo({ top: 0, behavior: "smooth" });
+    cleanUrl();
+  });
+  // Links from other pages (e.g. /#basvuru): let the browser jump there, then tidy the address.
+  if (location.hash) window.addEventListener("load", () => setTimeout(cleanUrl, 300));
 })();
