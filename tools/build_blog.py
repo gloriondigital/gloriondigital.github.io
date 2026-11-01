@@ -150,7 +150,7 @@ def footer(lang):
     </span>
   </div>
 </footer>
-<script src="/nudge.js?v=20261101d" defer></script>
+<script src="/nudge.js?v=20261101e" defer></script>
 <script src="/main.js?v=20261030c"></script>
 </body>
 </html>
@@ -473,7 +473,7 @@ CARD_SVG = '<svg class="pay-ic" width="18" height="18" viewBox="0 0 24 24" fill=
 def svc_form(s, lang):
     st = SVC_T[lang]
     opts = "".join(f'<option value="{E(x["form_value"])}"{" selected" if x is s else ""}>{E(x[lang]["title"])}</option>' for x in SERVICES)
-    secs = "".join(f'<option value="{E(v)}">{lab}</option>' for v, lab in st["sectors"])
+    secs = "".join(f'<option value="{E(v)}"{" selected" if (s["key"] == "eticaret" and v == "E-ticaret") else ""}>{lab}</option>' for v, lab in st["sectors"])
     return f'''<form class="lead-form" id="leadForm" novalidate>
         <h3>{st['form_t']}</h3>
         <p class="form-sub">{st['form_sub']}</p>

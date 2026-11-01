@@ -195,7 +195,7 @@
         reached = (window.innerHeight - r.top) / Math.max(1, r.height) >= 0.6;
       } else {
         var d = document.documentElement;
-        reached = (window.scrollY + window.innerHeight) / Math.max(1, d.scrollHeight) >= 0.5;
+        reached = (window.scrollY + window.innerHeight) / Math.max(1, d.scrollHeight) >= (svc ? 0.35 : 0.5);
       }
       if (reached && show('kutu')) window.removeEventListener('scroll', onScroll);
     };
