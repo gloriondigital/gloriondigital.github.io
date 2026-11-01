@@ -6,7 +6,7 @@
    gosterilmez; form gonderene hicbiri gosterilmez. Cerez cubugu acikken mesaj beklenir. */
 (function () {
   var path = location.pathname;
-  if (/^\/(kvkk|en\/privacy)\//.test(path)) return;
+  if (/^\/(kvkk|en\/privacy|yorum)\//.test(path)) return;
 
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }

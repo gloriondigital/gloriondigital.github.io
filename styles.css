@@ -444,3 +444,23 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 .cards .card.card-link { transition: border-color .2s, transform .2s; }
 .card-link .card-more { position: static; display: inline-block; margin-top: 18px; color: var(--gold-2); font-weight: 600; font-size: 14px; }
 .card-link .card-more::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+
+/* ---------- Musteri degerlendirme sayfasi ---------- */
+.rv { padding-top: 64px; }
+.rv .svc-title { margin-top: 10px; }
+.rv-form { display: grid; gap: 22px; }
+.rv-group { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+.rv-group legend { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+.rv-opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; color: var(--muted); font-size: 14.5px; line-height: 1.45; }
+.rv-opt input { accent-color: var(--gold); margin-top: 3px; }
+.rv-opt:has(input:checked) { border-color: rgba(212,169,78,.6); color: var(--text); background: rgba(212,169,78,.06); }
+.rv-field { display: grid; gap: 8px; font-size: 14px; font-weight: 600; }
+.rv-field small, .rv-form label small { font-weight: 400; color: var(--muted); }
+.rv-field textarea, .rv-field input { width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; color: var(--text); padding: 12px 14px; font: inherit; font-weight: 400; }
+.rv-field textarea:focus, .rv-field input:focus { outline: none; border-color: var(--gold); }
+.rv-req { color: var(--gold); }
+.rv-consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.rv-consent input { accent-color: var(--gold); margin-top: 3px; }
+.rv-kvkk { font-size: 12.5px; color: var(--muted); margin-top: -10px; }
+.rv-kvkk a { color: var(--gold); text-decoration: underline; }
+.rv-thanks { text-align: center; }

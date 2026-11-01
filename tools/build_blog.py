@@ -103,7 +103,7 @@ def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=20261101c">
+<link rel="stylesheet" href="/styles.css?v=20261101d">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -624,3 +624,74 @@ lt = lt.replace(f"raporlama: {SITE}/#hizmetler", f"raporlama: {SITE}{svc_url(SER
 lt = lt.replace(f"ölçekleme: {SITE}/#hizmetler", f"ölçekleme: {SITE}{svc_url(SERVICES[1], 'tr')}")
 llms_path.write_text(lt, encoding="utf-8")
 print("Built service pages:", ", ".join(svc_url(s, l) for s in SERVICES for l in ("tr", "en")))
+
+# ---------------------------------------------------------------------------
+# Musteri degerlendirme sayfasi (/yorum/) — menude yok, arama motorlarina kapali.
+# Yanitlar "Glorion Digital — Musteri Degerlendirmesi" Google Formu'na gider.
+# ---------------------------------------------------------------------------
+REVIEW_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdx5Kc4kTAC7FFWFKiWXXjTW6eFh_DEaoV8JNTc_CD_7_of1w/formResponse"
+RV_CONSENT = "Bu görüşün Glorion Digital'in web sitesi ve sosyal medya hesaplarında, seçtiğim şekilde yayınlanmasına izin veriyorum. Telefon numaram yayınlanmaz."
+RV_SERVICES = ["Meta Reklam Yönetimi", "E-Ticaret Büyüme", "Canlı Meta Reklam Eğitimi"]
+RV_DISPLAY = ["Ad soyadım ve işletmemle", "Adım ve soyadımın baş harfiyle (ör. Ayşe K.)", "İsimsiz, sadece sektörümle (ör. Anaokulu sahibi)"]
+
+def rv_radio(name, opts):
+    return "".join(f'<label class="rv-opt"><input type="radio" name="{name}" value="{E(o)}" required><span>{E(o)}</span></label>' for o in opts)
+
+rv_ld = {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "name": "Müşteri Değerlendirmesi", "url": f"{SITE}/yorum/", "inLanguage": "tr"}, ORG]}
+rv_page = head("tr", f"Müşteri Değerlendirmesi | {BRAND}", "Glorion Digital ile çalışma deneyiminizi paylaşın.", "/yorum/", "/yorum/", "/yorum/", rv_ld) \
+    .replace('<meta name="robots" content="index,follow,max-image-preview:large">', '<meta name="robots" content="noindex,nofollow">') \
+    + header("tr", "/yorum/", "/yorum/").replace(' aria-current="page"', '') + f'''
+<main>
+  <section class="section contact rv">
+    <div class="wrap contact-inner">
+      <p class="eyebrow">Müşteri değerlendirmesi</p>
+      <h1 class="svc-title">Bizimle çalışmak nasıldı?</h1>
+      <p class="lead">Görüşünüz bizim için çok değerli. İzin verirseniz web sitemizde ve sosyal medya hesaplarımızda, seçtiğiniz şekilde paylaşacağız. Form 1 dakika sürer.</p>
+      <form class="lead-form rv-form" id="reviewForm" novalidate>
+        <fieldset class="rv-group"><legend>Hangi hizmetimizi aldınız? <span class="rv-req">*</span></legend>{rv_radio("entry.1451213733", RV_SERVICES)}</fieldset>
+        <label class="rv-field"><span>Görüşünüz nedir? Bizimle çalışmak size neler kazandırdı? <span class="rv-req">*</span></span>
+          <textarea name="entry.989898274" rows="5" required></textarea></label>
+        <div class="form-grid">
+          <label><span>Ad Soyad <small>(isteğe bağlı)</small></span><input name="entry.24661653" type="text" autocomplete="name"></label>
+          <label><span>İşletmeniz veya sektörünüz <small>(isteğe bağlı)</small></span><input name="entry.151524149" type="text" autocomplete="organization" placeholder="ör. Anaokulu, E-ticaret"></label>
+        </div>
+        <fieldset class="rv-group"><legend>Görüşünüz sitede nasıl görünsün? <span class="rv-req">*</span></legend>{rv_radio("entry.258122235", RV_DISPLAY)}</fieldset>
+        <label class="rv-field"><span>Telefon numaranız <span class="rv-req">*</span> <small>(yayınlanmaz, yalnızca doğrulama ve izin kaydı için)</small></span>
+          <input name="entry.609434414" type="tel" autocomplete="tel" inputmode="tel" required placeholder="05xx xxx xx xx"></label>
+        <label class="check rv-consent"><input type="checkbox" name="entry.1792725728" value="{E(RV_CONSENT)}" required><span>{E(RV_CONSENT)} <span class="rv-req">*</span></span></label>
+        <p class="rv-kvkk">Bilgileriniz <a href="/kvkk/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a> kapsamında işlenir.</p>
+        <button type="submit" class="btn btn-gold btn-block">Değerlendirmeyi Gönder</button>
+        <p class="form-status" id="rvStatus" role="status" aria-live="polite"></p>
+      </form>
+      <div class="lead-form rv-thanks" id="rvThanks" hidden>
+        <h3>Teşekkür ederiz!</h3>
+        <p class="form-sub">Değerlendirmeniz bize ulaştı. Desteğiniz için çok teşekkürler.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+(function () {{
+  var f = document.getElementById('reviewForm'), st = document.getElementById('rvStatus');
+  f.addEventListener('submit', function (e) {{
+    e.preventDefault();
+    var fd = new FormData(f), msg = '';
+    if (!fd.get('entry.1451213733')) msg = 'Lütfen aldığınız hizmeti seçin.';
+    else if (!String(fd.get('entry.989898274') || '').trim()) msg = 'Lütfen görüşünüzü yazın.';
+    else if (!fd.get('entry.258122235')) msg = 'Lütfen görüşünüzün sitede nasıl görüneceğini seçin.';
+    else if (fd.get('entry.258122235') !== {json.dumps(RV_DISPLAY[2], ensure_ascii=False)} && !String(fd.get('entry.24661653') || '').trim()) msg = 'Bu görünüm seçeneği için ad soyadınızı yazın ya da "İsimsiz" seçeneğini işaretleyin.';
+    else if (String(fd.get('entry.609434414') || '').replace(/\\D/g, '').length < 10) msg = 'Lütfen geçerli bir telefon numarası yazın.';
+    else if (!fd.get('entry.1792725728')) msg = 'Paylaşabilmemiz için yayın iznini işaretleyin.';
+    if (msg) {{ st.textContent = msg; st.dataset.kind = 'err'; return; }}
+    var body = new URLSearchParams();
+    fd.forEach(function (v, k) {{ if (String(v).trim()) body.append(k, v); }});
+    var btn = f.querySelector('button'); btn.disabled = true; st.textContent = 'Gönderiliyor…'; st.dataset.kind = '';
+    fetch({json.dumps(REVIEW_FORM)}, {{ method: 'POST', mode: 'no-cors', body: body }})
+      .then(function () {{ f.hidden = true; document.getElementById('rvThanks').hidden = false; window.scrollTo({{ top: 0, behavior: 'smooth' }}); }})
+      .catch(function () {{ btn.disabled = false; st.textContent = 'Bir sorun oluştu, lütfen tekrar deneyin.'; st.dataset.kind = 'err'; }});
+  }});
+}})();
+</script>
+''' + footer("tr").replace('<script src="/nudge.js?v=20261101e" defer></script>\n', '')
+write(ROOT / "yorum" / "index.html", rv_page)
+print("Built /yorum/")
