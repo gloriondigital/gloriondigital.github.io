@@ -38,6 +38,8 @@
     if (closedAt && Date.now() - closedAt < WEEK) return false;
     if (sget('gd_nudge_goruldu_' + kind) === '1') return false;
     if (kind === 'cikis' && sget('gd_nudge_tiklandi') === '1') return false;
+    if (kind === 'kutu' && sget('gd_nudge_goruldu_egitim') === '1') return false;
+    if (kind === 'egitim' && sget('gd_nudge_goruldu_kutu') === '1') return false;
     return true;
   }
   function cookieBarOpen() { return !!document.querySelector('.cookie-bar'); }
@@ -77,6 +79,24 @@
       q: 'hizmet=egitim'
     }
   };
+  var seats = (typeof EGITIM_KALAN_KONTENJAN === 'number' && EGITIM_KALAN_KONTENJAN > 0) ? EGITIM_KALAN_KONTENJAN : 0;
+  var start = (typeof EGITIM_DONEM_BASLANGIC === 'string') ? EGITIM_DONEM_BASLANGIC.trim() : '';
+  T.egitim = {
+    k: ['Canlı Meta Reklam Eğitimi', 'Live Meta Ads Training'],
+    h: seats
+      ? ['Bu dönem için son ' + seats + ' kişilik yer.', 'Only ' + seats + (seats === 1 ? ' spot' : ' spots') + ' left this term.']
+      : ['Kontenjan sınırlı, yerini kaçırma.', 'Spots are limited — don’t miss yours.'],
+    p: [
+      'Sınıflar 10 kişiyle sınırlı; eğitmenle canlı, kendi reklam hesabında öğrenirsin.' + (start ? ' Yeni dönem ' + start + '’ta başlıyor.' : ' Yeni dönem başlamadan yerini ayırt.'),
+      'Classes are limited to 10; learn live with an instructor on your own ad account.' + (start ? ' The new term starts on ' + start + '.' : ' Save your spot before the new term starts.')
+    ],
+    c: ['Hemen kayıt ol', 'Enroll now'],
+    w: ['WhatsApp’tan yaz', 'Message on WhatsApp'],
+    q: 'hizmet=egitim'
+  };
+  // Egitim pop-up'i gosterildiyse cikis mesaji egitimi tekrarlamasin, on gorusme teklif etsin
+  function exitT() { return sget('gd_nudge_goruldu_egitim') === '1' ? {
+    k: T.exit.k, h: ['Reklamlarınıza ücretsiz bakalım.', 'Let’s review your ads for free.'], p: T.home.p, c: T.home.c, q: T.home.q } : T.exit; }
   var boxT = isPost ? (preschool ? T.preschool : T.post) : T.home;
 
   function lang() { return (document.documentElement.lang || 'tr').indexOf('en') === 0 ? 'en' : 'tr'; }
@@ -84,7 +104,7 @@
 
   window.dataLayer = window.dataLayer || [];
   function track(ev, kind) {
-    window.dataLayer.push({ event: ev, nudge_type: kind === 'kutu' ? (isPost ? 'blog-kutu' : 'sayfa-kutu') : 'cikis', nudge_category: isPost ? (preschool ? 'anaokulu' : 'blog') : 'genel' });
+    window.dataLayer.push({ event: ev, nudge_type: kind === 'kutu' ? (isPost ? 'blog-kutu' : 'sayfa-kutu') : kind === 'egitim' ? 'egitim-kontenjan' : 'cikis', nudge_category: isPost ? (preschool ? 'anaokulu' : 'blog') : 'genel' });
   }
 
   var open = null;
@@ -101,10 +121,10 @@
     if (!allowed(kind) || cookieBarOpen()) return false;
     if (open) closeBox(open.kind, false);
     sset('gd_nudge_goruldu_' + kind, '1');
-    var t = kind === 'kutu' ? boxT : T.exit;
-    var src = kind === 'kutu' ? (isPost ? 'blog-kutu' : 'sayfa-kutu') : 'cikis-mesaji';
+    var t = kind === 'kutu' ? boxT : kind === 'egitim' ? T.egitim : exitT();
+    var src = kind === 'kutu' ? (isPost ? 'blog-kutu' : 'sayfa-kutu') : kind === 'egitim' ? 'egitim-kontenjan' : 'cikis-mesaji';
     var el = document.createElement('aside');
-    el.className = 'gd-nudge' + (kind === 'cikis' ? ' is-center' : '');
+    el.className = 'gd-nudge' + (kind === 'cikis' ? ' is-center' : '') + (kind === 'egitim' ? ' is-urgent' : '');
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-live', 'polite');
     el.setAttribute('aria-label', t.k[lang() === 'en' ? 1 : 0]);
@@ -113,7 +133,8 @@
       '<span class="gd-nudge-k">' + both(t.k) + '</span>' +
       '<p class="gd-nudge-h">' + both(t.h) + '</p>' +
       '<p class="gd-nudge-p">' + both(t.p) + '</p>' +
-      '<a class="btn btn-gold btn-block gd-nudge-cta" href="/?' + t.q + '&kaynak=' + src + '#basvuru">' + both(t.c) + '&nbsp;→</a>';
+      '<a class="btn btn-gold btn-block gd-nudge-cta" href="/?' + t.q + '&kaynak=' + src + '#basvuru">' + both(t.c) + '&nbsp;→</a>' +
+      (t.w ? '<a class="gd-nudge-wa" target="_blank" rel="noopener" href="https://wa.me/905434945528?text=' + encodeURIComponent('EĞİTİM - Canlı Meta Reklam Eğitimi için kayıt olmak istiyorum.') + '">' + both(t.w) + '</a>' : '');
     document.body.appendChild(el);
     open = { el: el, kind: kind };
     el.querySelector('.gd-nudge-x').addEventListener('click', function () { closeBox(kind, true); });
@@ -136,6 +157,20 @@
     requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('is-open'); }); });
     track('nudge_view', kind);
     return true;
+  }
+
+  // 0) Egitim kontenjan pop-up'i: ana sayfada egitim bolumu en az 3 sn ekranda kalinca
+  var egitimSec = document.getElementById('egitim');
+  if (onHome && egitimSec && allowed('egitim') && 'IntersectionObserver' in window) {
+    var timer = null;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) {
+        if (x.isIntersecting) {
+          if (!timer) timer = setTimeout(function () { if (show('egitim')) io.disconnect(); timer = null; }, 3000);
+        } else if (timer) { clearTimeout(timer); timer = null; }
+      });
+    }, { threshold: 0.4 });
+    io.observe(egitimSec);
   }
 
   // 1) Kayan kutu

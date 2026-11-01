@@ -399,3 +399,7 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 @media (max-width: 640px) { .gd-nudge:not(.is-center) { left: 16px; right: 16px; width: auto; bottom: 86px; } }
 @media (prefers-reduced-motion: reduce) { .gd-nudge { transition: none; } }
 .note.pay-inline .link { margin-top: 0; }
+.gd-nudge.is-urgent { border-color: color-mix(in oklab, var(--gold) 55%, var(--line)); }
+.gd-nudge.is-urgent .gd-nudge-k::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgba(61,220,132,.2); vertical-align: 1px; }
+.gd-nudge-wa { display: block; margin-top: 10px; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--gold-2); }
+.gd-nudge-wa:hover { text-decoration: underline; text-underline-offset: 3px; }
