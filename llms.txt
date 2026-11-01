@@ -4,9 +4,9 @@
 > Meta (Facebook & Instagram) ads agency based in Turkey. Builds ad systems for messages, leads and sales, and runs live Meta ads training in classes of 10.
 
 ## Hizmetler / Services
-- Canlı Meta Reklam Eğitimi — eğitmenle canlı, kendi reklam hesabında, 10 kişilik sınıflar: https://gloriondigital.com/#egitim
-- Meta Reklam Yönetimi — strateji, kreatif yönlendirme, kurulum, optimizasyon, raporlama: https://gloriondigital.com/#hizmetler
-- E-Ticaret Büyüme — katalog reklamları, piksel/CAPI, yeniden hedefleme, ROAS odaklı ölçekleme: https://gloriondigital.com/#hizmetler
+- Canlı Meta Reklam Eğitimi — eğitmenle canlı, kendi reklam hesabında, 10 kişilik sınıflar: https://gloriondigital.com/hizmetler/canli-meta-reklam-egitimi/
+- Meta Reklam Yönetimi — strateji, kreatif yönlendirme, kurulum, optimizasyon, raporlama: https://gloriondigital.com/hizmetler/meta-reklam-yonetimi/
+- E-Ticaret Büyüme — katalog reklamları, piksel/CAPI, yeniden hedefleme, ROAS odaklı ölçekleme: https://gloriondigital.com/hizmetler/e-ticaret-buyume/
 - Sektörler: anaokulları, e-ticaret, gayrimenkul, güzellik & wellness, perakende
 
 ## İletişim / Contact

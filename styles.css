@@ -403,3 +403,44 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 .gd-nudge.is-urgent .gd-nudge-k::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgba(61,220,132,.2); vertical-align: 1px; }
 .gd-nudge-wa { display: block; margin-top: 10px; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--gold-2); }
 .gd-nudge-wa:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Hizmet detay sayfalari ---------- */
+.svc-hero { padding-top: 56px; }
+.svc-hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; margin-top: 18px; }
+@media (max-width: 900px) { .svc-hero-grid { grid-template-columns: 1fr; gap: 32px; } }
+.svc-icon { display: inline-grid; place-items: center; width: 52px; height: 52px; border: 1px solid rgba(212,169,78,.35); border-radius: 12px; color: var(--gold); font-size: 22px; margin-bottom: 18px; }
+.svc-title { font-family: var(--serif); font-weight: 500; font-size: clamp(36px, 5vw, 58px); line-height: 1.05; letter-spacing: -.01em; margin-bottom: 18px; }
+.svc-hero .lead { color: var(--muted); font-size: 17px; max-width: 58ch; margin-bottom: 26px; }
+.svc-hero .note.pay-inline { margin-top: 18px; color: var(--muted); font-size: 14px; }
+.svc-for { background: var(--surface); border: 1px solid rgba(212,169,78,.35); border-radius: var(--radius); padding: 28px; }
+.svc-for h2 { font-size: 22px; margin: 0 0 16px; max-width: none; }
+.svc-for ul, .svc-get { list-style: none; display: grid; gap: 12px; }
+.svc-for li, .svc-get li { position: relative; padding-left: 26px; color: var(--text); font-size: 15px; line-height: 1.5; }
+.svc-for li::before, .svc-get li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; }
+.svc-inc .card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+.svc-inc .card p { color: var(--muted); font-size: 15px; }
+.svc-get-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .svc-get-grid { grid-template-columns: 1fr; } }
+.svc-get-grid h2 { margin-bottom: 24px; }
+.svc-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.svc-stats div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.svc-stats b { display: block; font-family: var(--serif); font-size: 34px; font-weight: 500; color: var(--gold-2); line-height: 1; margin-bottom: 8px; }
+.svc-stats span { color: var(--muted); font-size: 13.5px; }
+.svc-pay { max-width: none; margin: 0 0 48px; }
+.svc-pay .link { margin-top: 0; }
+.svc-faq-h { margin-bottom: 12px; }
+.svc-others { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 900px) { .svc-others { grid-template-columns: 1fr; } }
+.svc-other { display: block; color: inherit; }
+.svc-other:hover { border-color: rgba(212,169,78,.55); }
+.svc-other .icon { color: var(--gold); font-size: 20px; }
+.svc-other h3 { font-size: 19px; margin: 12px 0 8px; }
+.svc-other p { color: var(--muted); font-size: 14.5px; }
+.svc-other .link { margin-top: 14px; }
+
+/* Ana sayfa hizmet kartlari tiklanabilir */
+.cards .card.card-link { position: relative; cursor: pointer; }
+.cards .card.card-link:hover { border-color: rgba(212,169,78,.55); transform: translateY(-2px); }
+.cards .card.card-link { transition: border-color .2s, transform .2s; }
+.card-link .card-more { position: static; display: inline-block; margin-top: 18px; color: var(--gold-2); font-weight: 600; font-size: 14px; }
+.card-link .card-more::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }

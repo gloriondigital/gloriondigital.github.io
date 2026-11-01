@@ -103,7 +103,7 @@ def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=20261101b">
+<link rel="stylesheet" href="/styles.css?v=20261101c">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -150,7 +150,7 @@ def footer(lang):
     </span>
   </div>
 </footer>
-<script src="/nudge.js?v=20261101c" defer></script>
+<script src="/nudge.js?v=20261101d" defer></script>
 <script src="/main.js?v=20261030c"></script>
 </body>
 </html>
@@ -436,3 +436,191 @@ smx = sm_path.read_text(encoding="utf-8").replace("</urlset>\n",
     + "</urlset>\n")
 sm_path.write_text(smx, encoding="utf-8")
 print("Built KVKK pages")
+
+# ---------------------------------------------------------------------------
+# Hizmet detay sayfalari (tools/services_data.py)
+# ---------------------------------------------------------------------------
+from services_data import SERVICES
+SVC_UPDATED = "2026-11-01"
+SVC_DIR = {"tr": "/hizmetler/", "en": "/en/services/"}
+if (ROOT / "hizmetler").exists():
+    shutil.rmtree(ROOT / "hizmetler")
+
+def svc_url(s, lang): return f"{SVC_DIR[lang]}{s[lang]['slug']}/"
+
+SVC_T = {
+  "tr": dict(svc="Hizmetler", cta="Ücretsiz ön görüşme al", wa="WhatsApp'tan yazın", stats_t="Rakamlarla",
+             pay_t="Kredi kartıyla güvenli ödeme", pay_p="Teklif onayından sonra size özel, güvenli bir ödeme linki gönderiyoruz; ödemeyi kredi kartınızla tamamlıyorsunuz. Ödeme linkini yalnızca 0 543 494 55 28 numaralı WhatsApp hattımızdan veya info.gloriondigital@gmail.com adresinden gönderiyoruz.",
+             pay_more="Ödeme nasıl yapılır?", other="Diğer hizmetlerimiz", detail="Detayları incele →",
+             form_t="Ücretsiz ön görüşme başvurusu", form_sub="Formu doldurun, en kısa sürede size dönelim.",
+             name="Ad Soyad", phone="Telefon", business="İşletme adı", sector="Sektör", service="İlgilendiğiniz hizmet",
+             message="Mesajınız (isteğe bağlı)", submit="Başvuruyu Gönder",
+             consent='<a href="/kvkk/" target="_blank" rel="noopener">KVKK Aydınlatma Metni</a>\'ni okudum; bilgilerimin benimle iletişime geçilmesi amacıyla işlenmesini kabul ediyorum.',
+             sectors=[("Anaokulu","Anaokulları"),("E-ticaret","E-ticaret"),("Gayrimenkul","Gayrimenkul"),("Güzellik & Wellness","Güzellik &amp; Wellness"),("Perakende","Perakende"),("Diğer","Diğer")],
+             stats=[("50+","yönetilen e-ticaret mağazası"),("50+","hizmet verilen eğitim kurumu"),("60+","eğitim verilen kişi"),("%100","şeffaf raporlama")]),
+  "en": dict(svc="Services", cta="Get a free consultation", wa="Message on WhatsApp", stats_t="In numbers",
+             pay_t="Secure credit card payment", pay_p="After you approve the quote, we send you a personal, secure payment link and you complete the payment by credit card. We only send payment links from our WhatsApp line 0 543 494 55 28 or from info.gloriondigital@gmail.com.",
+             pay_more="How payment works", other="Our other services", detail="See details →",
+             form_t="Free consultation request", form_sub="Fill in the form and we'll get back to you shortly.",
+             name="Full name", phone="Phone", business="Business name", sector="Industry", service="Service you're interested in",
+             message="Your message (optional)", submit="Send request",
+             consent='I have read the <a href="/en/privacy/" target="_blank" rel="noopener">Privacy Notice</a> and agree that my details are processed to contact me.',
+             sectors=[("Anaokulu","Preschools"),("E-ticaret","E-commerce"),("Gayrimenkul","Real Estate"),("Güzellik & Wellness","Beauty &amp; Wellness"),("Perakende","Retail"),("Diğer","Other")],
+             stats=[("50+","e-commerce stores managed"),("50+","education institutions served"),("60+","people trained"),("100%","transparent reporting")]),
+}
+CARD_SVG = '<svg class="pay-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>'
+
+def svc_form(s, lang):
+    st = SVC_T[lang]
+    opts = "".join(f'<option value="{E(x["form_value"])}"{" selected" if x is s else ""}>{E(x[lang]["title"])}</option>' for x in SERVICES)
+    secs = "".join(f'<option value="{E(v)}">{lab}</option>' for v, lab in st["sectors"])
+    return f'''<form class="lead-form" id="leadForm" novalidate>
+        <h3>{st['form_t']}</h3>
+        <p class="form-sub">{st['form_sub']}</p>
+        <div class="form-grid">
+          <label><span>{st['name']}</span><input name="name" type="text" autocomplete="name" required></label>
+          <label><span>{st['phone']}</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="05xx xxx xx xx"></label>
+          <label><span>{st['business']}</span><input name="business" type="text" autocomplete="organization"></label>
+          <label><span>{st['sector']}</span><select name="sector">{secs}</select></label>
+          <label class="full"><span>{st['service']}</span><select name="service">{opts}</select></label>
+          <label class="full"><span>{st['message']}</span><textarea name="message" rows="3"></textarea></label>
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check full"><input type="checkbox" name="consent" required><span>{st['consent']}</span></label>
+        </div>
+        <button type="submit" class="btn btn-gold btn-block">{st['submit']}</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>'''
+
+def svc_page(s, lang):
+    d = s[lang]; t = T[lang]; st = SVC_T[lang]
+    url = svc_url(s, lang); alt_tr = svc_url(s, "tr"); alt_en = svc_url(s, "en")
+    service_ld = {"@type": "Course" if s["key"] == "egitim" else "Service", "name": d["title"], "description": d["desc"],
+                  "url": f"{SITE}{url}", "inLanguage": lang, "provider": {"@id": f"{SITE}/#org"}}
+    if s["key"] != "egitim":
+        service_ld.update({"serviceType": d["title"], "areaServed": "TR"})
+    ld = {"@context": "https://schema.org", "@graph": [
+        service_ld,
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": t["home"], "item": f"{SITE}{home_url(lang)}"},
+            {"@type": "ListItem", "position": 2, "name": st["svc"], "item": f"{SITE}{anchor(lang, 'hizmetler')}"},
+            {"@type": "ListItem", "position": 3, "name": d["title"], "item": f"{SITE}{url}"}]},
+        {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in d["faq"]]},
+        ORG]}
+    wa_text = "EĞİTİM - Canlı Meta Reklam Eğitimi hakkında bilgi almak istiyorum." if s["key"] == "egitim" else f"Merhaba, {s['tr']['title']} hizmeti hakkında bilgi almak istiyorum."
+    wa = f"{WA}?text={urllib.parse.quote(wa_text)}"
+    fors = "".join(f"<li>{E(x)}</li>" for x in d["for"])
+    incs = "".join(f'<article class="card"><h3>{E(h)}</h3><p>{E(p)}</p></article>' for h, p in d["inc"])
+    steps = "".join(f"<li><span>{i+1:02d}</span><h3>{E(h)}</h3><p>{E(p)}</p></li>" for i, (h, p) in enumerate(d["steps"]))
+    gets = "".join(f"<li>{E(x)}</li>" for x in d["get"])
+    faqs = "".join(f"<details><summary>{E(q)}</summary><p>{E(a)}</p></details>" for q, a in d["faq"])
+    stats = "".join(f'<div><b>{n}</b><span>{E(l)}</span></div>' for n, l in st["stats"])
+    levels = ""
+    if d.get("levels"):
+        lv = "".join(f"<li><span>{'+' if i == 3 else f'{i+1:02d}'}</span><h3>{E(h)}</h3><p>{E(p)}</p></li>" for i, (h, p) in enumerate(d["levels"]))
+        levels = f'''
+  <section id="egitim" class="section section-alt">
+    <div class="wrap">
+      <p class="eyebrow">{E(d['title'])}</p>
+      <h2>{E(d['levels_title'])}</h2>
+      <ol class="steps">{lv}</ol>
+    </div>
+  </section>'''
+    others = "".join(f'<a class="card svc-other" href="{svc_url(x, lang)}"><span class="icon">{x["icon"]}</span><h3>{E(x[lang]["title"])}</h3><p>{E(x[lang]["desc"])}</p><span class="link">{st["detail"]}</span></a>' for x in SERVICES if x is not s)
+    pay_anchor = anchor(lang, "odeme")
+    page = head(lang, f"{d['seo_title']} | {BRAND}", d["desc"], url, alt_tr, alt_en, ld) \
+        + header(lang, alt_tr, alt_en).replace(' aria-current="page"', '').replace(f'href="{anchor(lang, "basvuru")}" class="btn btn-gold btn-sm"', 'href="#basvuru" class="btn btn-gold btn-sm"') + f'''
+<main data-service="{s['key']}">
+  <section class="section svc-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="breadcrumb"><a href="{home_url(lang)}">{t['home']}</a><span>/</span><a href="{anchor(lang, 'hizmetler')}">{st['svc']}</a><span>/</span><span>{E(d['title'])}</span></nav>
+      <div class="svc-hero-grid">
+        <div>
+          <span class="icon svc-icon" aria-hidden="true">{s['icon']}</span>
+          <h1 class="svc-title">{E(d['title'])}</h1>
+          <p class="lead">{E(d['lead'])}</p>
+          <div class="hero-cta">
+            <a href="#basvuru" class="btn btn-gold">{st['cta']}</a>
+            <a href="{wa}" target="_blank" rel="noopener" class="btn btn-ghost">{st['wa']}</a>
+          </div>
+          <p class="note pay-inline">{CARD_SVG}<span>{st['pay_t']}</span> <a href="#odeme-bilgi" class="link">{st['pay_more']}</a></p>
+        </div>
+        <aside class="svc-for">
+          <h2>{E(d['for_title'])}</h2>
+          <ul>{fors}</ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <p class="eyebrow">{E(d['title'])}</p>
+      <h2>{E(d['inc_title'])}</h2>
+      <div class="cards svc-inc">{incs}</div>
+    </div>
+  </section>
+{levels}
+  <section class="section">
+    <div class="wrap">
+      <h2>{E(d['steps_title'])}</h2>
+      <ol class="steps">{steps}</ol>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap svc-get-grid">
+      <div>
+        <h2>{E(d['get_title'])}</h2>
+        <ul class="svc-get">{gets}</ul>
+      </div>
+      <div class="svc-stats" aria-label="{st['stats_t']}">{stats}</div>
+    </div>
+  </section>
+
+  <section class="section" id="odeme-bilgi">
+    <div class="wrap narrow">
+      <p class="pay-note svc-pay">{CARD_SVG}<span><strong>{st['pay_t']}.</strong> {st['pay_p']} <a href="{pay_anchor}" class="link">{st['pay_more']} →</a></span></p>
+      <h2 class="svc-faq-h">{t['faqh']}</h2>
+      {faqs}
+    </div>
+  </section>
+
+  <section class="section contact" id="iletisim">
+    <div class="wrap contact-inner">
+      <h2>{E(d['cta_title'])}</h2>
+      <p class="lead">{E(d['cta_lead'])}</p>
+      <div id="basvuru" aria-hidden="true"></div>
+      {svc_form(s, lang)}
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap">
+      <h2>{st['other']}</h2>
+      <div class="cards svc-others">{others}</div>
+    </div>
+  </section>
+</main>
+''' + footer(lang).replace('<script src="/nudge.js', '<script src="/config.js?v=20261101a"></script>\n<script src="/i18n.js?v=20261101a"></script>\n<script src="/nudge.js')
+    write(ROOT / url.strip("/") / "index.html", page)
+
+import urllib.parse
+for s in SERVICES:
+    for lang in ("tr", "en"):
+        svc_page(s, lang)
+
+smx = sm_path.read_text(encoding="utf-8").replace("</urlset>\n", "".join(
+    sm_url(svc_url(s, "tr"), svc_url(s, "en"), SVC_UPDATED)
+    + sm_url(svc_url(s, "en"), svc_url(s, "en"), SVC_UPDATED).replace(
+        f'hreflang="tr" href="{SITE}{svc_url(s, "en")}"', f'hreflang="tr" href="{SITE}{svc_url(s, "tr")}"')
+    for s in SERVICES) + "</urlset>\n")
+sm_path.write_text(smx, encoding="utf-8")
+
+llms_path = ROOT / "llms.txt"
+lt = llms_path.read_text(encoding="utf-8")
+for s in SERVICES:
+    lt = lt.replace(f"{SITE}/#egitim" if s["key"] == "egitim" else "@@none@@", f"{SITE}{svc_url(s, 'tr')}")
+lt = lt.replace(f"raporlama: {SITE}/#hizmetler", f"raporlama: {SITE}{svc_url(SERVICES[0], 'tr')}")
+lt = lt.replace(f"ölçekleme: {SITE}/#hizmetler", f"ölçekleme: {SITE}{svc_url(SERVICES[1], 'tr')}")
+llms_path.write_text(lt, encoding="utf-8")
+print("Built service pages:", ", ".join(svc_url(s, l) for s in SERVICES for l in ("tr", "en")))

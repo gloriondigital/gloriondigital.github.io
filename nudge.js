@@ -47,6 +47,8 @@
   var isPost = !!document.querySelector('.prose') && /\/blog\/[^\/]+\/$/.test(path);
   var preschool = /anaokulu|preschool/.test(path);
   var onHome = !!lead;
+  var svcEl = document.querySelector('main[data-service]');
+  var svc = svcEl ? svcEl.getAttribute('data-service') : '';
 
   // Metinler (TR + EN; ana sayfada dil gecisiyle birlikte degisir)
   var T = {
@@ -95,16 +97,26 @@
     q: 'hizmet=egitim'
   };
   // Egitim pop-up'i gosterildiyse cikis mesaji egitimi tekrarlamasin, on gorusme teklif etsin
-  function exitT() { return sget('gd_nudge_goruldu_egitim') === '1' ? {
+  function exitT() { return (sget('gd_nudge_goruldu_egitim') === '1' || (svc && svc !== 'egitim')) ? {
     k: T.exit.k, h: ['Reklamlarınıza ücretsiz bakalım.', 'Let’s review your ads for free.'], p: T.home.p, c: T.home.c, q: T.home.q } : T.exit; }
-  var boxT = isPost ? (preschool ? T.preschool : T.post) : T.home;
+  T.eticaret = {
+    k: ['Ücretsiz mağaza analizi', 'Free store review'],
+    h: ['Reklam bütçeniz satışa dönüşüyor mu?', 'Is your ad budget turning into sales?'],
+    p: ['Mağazanızın reklam hesabını ve ölçüm altyapısını ücretsiz inceleyelim, kazandıran kampanyayı birlikte bulalım.', 'Let’s review your store’s ad account and tracking for free and find the campaign that makes money.'],
+    c: ['Ücretsiz analiz al', 'Get a free review'],
+    q: 'hizmet=eticaret&sektor=eticaret'
+  };
+  var boxT = isPost ? (preschool ? T.preschool : T.post)
+    : svc === 'eticaret' ? T.eticaret
+    : svc === 'egitim' ? { k: T.egitim.k, h: T.egitim.h, p: T.egitim.p, c: T.egitim.c, w: T.egitim.w, q: T.egitim.q }
+    : T.home;
 
   function lang() { return (document.documentElement.lang || 'tr').indexOf('en') === 0 ? 'en' : 'tr'; }
   function both(pair) { return '<span class="lang-tr">' + pair[0] + '</span><span class="lang-en">' + pair[1] + '</span>'; }
 
   window.dataLayer = window.dataLayer || [];
   function track(ev, kind) {
-    window.dataLayer.push({ event: ev, nudge_type: kind === 'kutu' ? (isPost ? 'blog-kutu' : 'sayfa-kutu') : kind === 'egitim' ? 'egitim-kontenjan' : 'cikis', nudge_category: isPost ? (preschool ? 'anaokulu' : 'blog') : 'genel' });
+    window.dataLayer.push({ event: ev, nudge_type: kind === 'kutu' ? (isPost ? 'blog-kutu' : 'sayfa-kutu') : kind === 'egitim' ? 'egitim-kontenjan' : 'cikis', nudge_category: svc ? 'hizmet-' + svc : isPost ? (preschool ? 'anaokulu' : 'blog') : 'genel' });
   }
 
   var open = null;
@@ -161,7 +173,7 @@
 
   // 0) Egitim kontenjan pop-up'i: ana sayfada egitim bolumu en az 3 sn ekranda kalinca
   var egitimSec = document.getElementById('egitim');
-  if (onHome && egitimSec && allowed('egitim') && 'IntersectionObserver' in window) {
+  if (lead && egitimSec && allowed('egitim') && 'IntersectionObserver' in window) {
     var timer = null;
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (x) {
