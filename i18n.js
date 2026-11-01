@@ -1,6 +1,18 @@
 // English translations. Turkish is the default text written in index.html.
 const EN = {
   "nav.services": "Services",
+  "pay.eyebrow": "Payment",
+  "pay.title": "Secure credit card payment",
+  "pay.lead": "You can pay by credit card for Meta Ads Management, E-Commerce Growth and the Live Meta Ads Training.",
+  "pay1.t": "Consultation",
+  "pay1.d": "We clarify what you need in a free consultation.",
+  "pay2.t": "Quote & approval",
+  "pay2.d": "We share the right service and the price in writing.",
+  "pay3.t": "Payment link",
+  "pay3.d": "We send you a personal, secure payment link and you complete the payment by credit card.",
+  "pay.note": "We only send payment links from our WhatsApp line 0 543 494 55 28 or from info.gloriondigital@gmail.com. Please ignore payment requests from any other source.",
+  "q5": "Can I pay by credit card?",
+  "a5": "Yes. You can pay by credit card for Meta Ads Management, E-Commerce Growth and the Live Meta Ads Training. After the consultation and your approval of the quote, we send you a personal, secure payment link to complete the payment.",
   "nav.process": "Process",
   "nav.training": "Live Training",
   "nav.sectors": "Industries",

@@ -372,3 +372,30 @@ html[lang="tr"] .lang-en, html[lang="en"] .lang-tr { display: none !important; }
 .cookie-actions .btn { cursor: pointer; font-family: var(--sans); border: 0; }
 .cookie-actions .btn-ghost { border: 1px solid var(--line); background: none; }
 @media (max-width: 640px) { .cookie-bar { flex-direction: column; align-items: stretch; gap: 12px; bottom: 84px; } .cookie-actions .btn { flex: 1; } }
+
+/* ---------- Odeme bilgisi ---------- */
+.payment .lead { max-width: 640px; margin-bottom: 28px; }
+.steps.steps-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .steps.steps-3 { grid-template-columns: 1fr; } }
+.pay-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 28px; max-width: 760px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--muted); font-size: 14px; line-height: 1.55; }
+.pay-ic { flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+.note.pay-inline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.note.pay-inline .pay-ic { margin-top: 0; }
+.footer-pay { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
+.footer-pay .pay-ic { margin-top: 0; }
+
+/* ---------- Site ici mesaj (nudge) ---------- */
+.gd-nudge { position: fixed; right: 18px; bottom: 90px; z-index: 65; width: min(370px, calc(100vw - 32px)); padding: 22px 22px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 24px 60px -18px rgba(0,0,0,.75); opacity: 0; transform: translateY(20px); transition: opacity .35s ease, transform .35s ease; pointer-events: none; }
+.gd-nudge.is-open { opacity: 1; transform: none; pointer-events: auto; }
+.gd-nudge.is-center { right: auto; bottom: auto; left: 50%; top: 50%; width: min(440px, calc(100vw - 32px)); text-align: center; transform: translate(-50%, -44%); box-shadow: 0 0 0 100vmax rgba(0,0,0,.6), 0 24px 60px -18px rgba(0,0,0,.8); }
+.gd-nudge.is-center.is-open { transform: translate(-50%, -50%); }
+.gd-nudge-x { position: absolute; top: 8px; right: 10px; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 24px; line-height: 1; cursor: pointer; }
+.gd-nudge-x:hover { background: var(--bg-alt); color: var(--text); }
+.gd-nudge-k { display: block; font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.gd-nudge-h { font-family: var(--serif); font-weight: 700; font-size: 21px; line-height: 1.25; color: var(--text); margin-bottom: 8px; padding-right: 18px; }
+.gd-nudge.is-center .gd-nudge-h { font-size: 25px; padding: 0 18px; }
+.gd-nudge-p { font-size: 14.5px; line-height: 1.6; color: var(--muted); margin-bottom: 16px; }
+.gd-nudge-cta { justify-content: center; }
+@media (max-width: 640px) { .gd-nudge:not(.is-center) { left: 16px; right: 16px; width: auto; bottom: 86px; } }
+@media (prefers-reduced-motion: reduce) { .gd-nudge { transition: none; } }
+.note.pay-inline .link { margin-top: 0; }
