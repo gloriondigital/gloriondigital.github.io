@@ -150,7 +150,7 @@ def footer(lang):
     </span>
   </div>
 </footer>
-<script src="/nudge.js?v=20261101a" defer></script>
+<script src="/nudge.js?v=20261101b" defer></script>
 <script src="/main.js?v=20261030c"></script>
 </body>
 </html>

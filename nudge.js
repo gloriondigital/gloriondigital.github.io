@@ -113,7 +113,7 @@
       '<span class="gd-nudge-k">' + both(t.k) + '</span>' +
       '<p class="gd-nudge-h">' + both(t.h) + '</p>' +
       '<p class="gd-nudge-p">' + both(t.p) + '</p>' +
-      '<a class="btn btn-gold btn-block gd-nudge-cta" href="/?' + t.q + '&kaynak=' + src + '#basvuru">' + both(t.c) + ' →</a>';
+      '<a class="btn btn-gold btn-block gd-nudge-cta" href="/?' + t.q + '&kaynak=' + src + '#basvuru">' + both(t.c) + '&nbsp;→</a>';
     document.body.appendChild(el);
     open = { el: el, kind: kind };
     el.querySelector('.gd-nudge-x').addEventListener('click', function () { closeBox(kind, true); });
