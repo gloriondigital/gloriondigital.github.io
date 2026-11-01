@@ -317,14 +317,14 @@ print(f"Built {len(POSTS)} posts x 2 languages; sitemap {sm.count('<url>')} urls
 # ---------------------------------------------------------------------------
 # KVKK / Privacy pages
 # ---------------------------------------------------------------------------
-LEGAL_UPDATED = "2026-10-28"
+LEGAL_UPDATED = "2026-11-01"
 KVKK = {
  "tr": dict(url="/kvkk/", title="KVKK Aydınlatma Metni",
   desc="Glorion Digital web sitesi üzerinden toplanan kişisel verilerin işlenmesine ilişkin 6698 sayılı KVKK kapsamında aydınlatma metni.",
   body=f"""
 <p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, <strong>Gülsüm KABA (Glorion Digital)</strong> (“biz”) tarafından bu web sitesi üzerinden toplanan kişisel verilerin hangi amaçla ve nasıl işlendiği konusunda sizi bilgilendirmek için hazırlanmıştır.</p>
 <h2>1. Veri sorumlusu</h2>
-<p>Veri sorumlusu, <strong>Gülsüm KABA (Glorion Digital)</strong>'dır.<br>Adres: Ortaköy Mahallesi, Diğerküme Evleri, 360 Sokak No:1A, Arslan Villaları, Menteşe/Muğla.<br>Bize <a href="mailto:{EMAIL}">{EMAIL}</a> adresinden ve <a href="tel:{PHONE}">0 543 494 55 28</a> numarasından ulaşabilirsiniz.</p>
+<p>Veri sorumlusu, <strong>Gülsüm KABA (Glorion Digital)</strong>'dır.<br>Adres: Ortaköy Mahallesi, Diğerküme Evleri, 360 Sokak No:1A, Arslan Villaları, Menteşe/Muğla.<br>Bize <a href="mailto:info.gloriondigital@gmail.com">info.gloriondigital@gmail.com</a> adresinden ve <a href="tel:+905434945528">0 543 494 55 28</a> numarasından ulaşabilirsiniz.</p>
 <h2>2. İşlenen kişisel veriler</h2>
 <ul>
 <li><strong>Kimlik ve iletişim:</strong> ad soyad, telefon numarası, e-posta adresi.</li>
@@ -342,29 +342,32 @@ KVKK = {
 <h2>4. Hukuki sebepler ve toplama yöntemi</h2>
 <p>Verileriniz, web sitemizdeki formlar ve WhatsApp üzerinden, elektronik ortamda toplanır. KVKK'nın 5. maddesinde yer alan; bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması, veri sorumlusunun meşru menfaati ve hukuki yükümlülüklerin yerine getirilmesi sebeplerine; yurt dışına aktarım gerektiren işlemler için ise KVKK'nın 9. maddesi kapsamında açık rızanıza dayanılarak işlenir.</p>
 <h2>5. Aktarım</h2>
-<p>Verileriniz satılmaz ve reklam amacıyla üçüncü kişilerle paylaşılmaz. Hizmetin sunulabilmesi için aşağıdaki hizmet sağlayıcılar kullanılır; bu sağlayıcıların sunucuları yurt dışında bulunabilir:</p>
+<p>Formda paylaştığınız iletişim bilgileriniz satılmaz ve reklam amacıyla üçüncü kişilerle paylaşılmaz. Hizmetin sunulabilmesi için aşağıdaki hizmet sağlayıcılar kullanılır; bu sağlayıcıların sunucuları yurt dışında bulunabilir:</p>
 <ul>
 <li><strong>Google (Google E-Tablolar / Apps Script):</strong> form kayıtlarının saklanması,</li>
 <li><strong>WhatsApp (Meta):</strong> WhatsApp üzerinden iletişime geçmeyi seçmeniz halinde mesajlaşma,</li>
 <li><strong>GitHub Pages:</strong> web sitesinin barındırılması (teknik erişim kayıtları),</li>
-<li><strong>Google Fonts:</strong> sitedeki yazı tiplerinin yüklenmesi (IP adresi gibi teknik veriler).</li>
+<li><strong>Google Fonts:</strong> sitedeki yazı tiplerinin yüklenmesi (IP adresi gibi teknik veriler),</li>
+<li><strong>Google Analytics ve Google Etiket Yöneticisi:</strong> yalnızca çerezlere onay vermeniz halinde, site ziyaretlerinin istatistiksel olarak ölçülmesi,</li>
+<li><strong>Meta Pikseli (Meta Platforms):</strong> yalnızca çerezlere onay vermeniz halinde, reklamlarımızın ölçülmesi ve ilgili kitlelere gösterilmesi (ziyaret edilen sayfa, form gönderimi veya iletişim butonuna tıklama gibi olaylar; ad ve telefon gibi form bilgileriniz Meta'ya gönderilmez).</li>
 </ul>
 <p>Ayrıca kanunen yetkili kamu kurum ve kuruluşlarına, talep halinde ve mevzuatın izin verdiği ölçüde aktarım yapılabilir.</p>
 <h2>6. Çerezler ve yerel depolama</h2>
-<p>Sitemizde reklam veya analiz çerezi kullanılmamaktadır. Dil tercihiniz ve örnek PDF formunu doldurduğunuz bilgisi, tekrar sormamak için yalnızca tarayıcınızın yerel depolama alanında tutulur ve bize iletilmez. Tarayıcı ayarlarınızdan bu kayıtları istediğiniz zaman silebilirsiniz.</p>
+<p>Sitemizde, yalnızca açık rızanızla çalışan analiz (Google Analytics) ve reklam (Meta Pikseli) çerezleri kullanılır. Siteye ilk girişinizde çıkan bildirimden bu çerezleri kabul edebilir veya reddedebilirsiniz; reddetmeniz halinde bu çerezler yerleştirilmez. Tercihinizi istediğiniz zaman sayfanın altındaki "Çerez Ayarları" bağlantısından değiştirebilirsiniz.</p>
+<p>Dil tercihiniz, çerez tercihiniz, örnek PDF formunu doldurduğunuz bilgisi ve sitedeki bilgilendirme kutularını kapatıp kapatmadığınız, tekrar sormamak için yalnızca tarayıcınızın yerel depolama alanında tutulur. Tarayıcı ayarlarınızdan bu kayıtları istediğiniz zaman silebilirsiniz.</p>
 <h2>7. Saklama süresi</h2>
 <p>Verileriniz, işleme amacının gerektirdiği süre boyunca ve her halükarda ilgili mevzuatta öngörülen süreler kadar saklanır; süre sonunda silinir, yok edilir veya anonim hale getirilir.</p>
 <h2>8. Haklarınız</h2>
 <p>KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme, aktarıldığı üçüncü kişileri bilme, eksik veya yanlış işlenmişse düzeltilmesini, şartları oluştuğunda silinmesini veya yok edilmesini isteme, bu işlemlerin aktarılan üçüncü kişilere bildirilmesini isteme, münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonuç çıkmasına itiraz etme ve kanuna aykırı işleme nedeniyle zarara uğramanız halinde zararın giderilmesini talep etme haklarına sahipsiniz.</p>
 <h2>9. Başvuru</h2>
-<p>Haklarınıza ilişkin taleplerinizi, kimliğinizi doğrulayacak bilgilerle birlikte <a href="mailto:{EMAIL}">{EMAIL}</a> adresine iletebilirsiniz. Başvurunuz en geç 30 gün içinde ücretsiz olarak sonuçlandırılır.</p>
+<p>Haklarınıza ilişkin taleplerinizi, kimliğinizi doğrulayacak bilgilerle birlikte <a href="mailto:info.gloriondigital@gmail.com">info.gloriondigital@gmail.com</a> adresine iletebilirsiniz. Başvurunuz en geç 30 gün içinde ücretsiz olarak sonuçlandırılır.</p>
 """),
  "en": dict(url="/en/privacy/", title="Privacy Notice (KVKK)",
   desc="Privacy notice under Turkish Personal Data Protection Law No. 6698 (KVKK) for personal data collected through the Glorion Digital website.",
   body=f"""
 <p>This notice explains, under Turkish Personal Data Protection Law No. 6698 (“KVKK”), how <strong>Gülsüm KABA (Glorion Digital)</strong> (“we”) processes personal data collected through this website and for what purposes. The Turkish version is the binding text.</p>
 <h2>1. Data controller</h2>
-<p>The data controller is <strong>Gülsüm KABA (Glorion Digital)</strong>.<br>Address: Ortaköy Mahallesi, Diğerküme Evleri, 360 Sokak No:1A, Arslan Villaları, Menteşe/Muğla, Türkiye.<br>You can reach us at <a href="mailto:{EMAIL}">{EMAIL}</a> or <a href="tel:{PHONE}">+90 543 494 55 28</a>.</p>
+<p>The data controller is <strong>Gülsüm KABA (Glorion Digital)</strong>.<br>Address: Ortaköy Mahallesi, Diğerküme Evleri, 360 Sokak No:1A, Arslan Villaları, Menteşe/Muğla, Türkiye.<br>You can reach us at <a href="mailto:info.gloriondigital@gmail.com">info.gloriondigital@gmail.com</a> or <a href="tel:+905434945528">+90 543 494 55 28</a>.</p>
 <h2>2. Personal data we process</h2>
 <ul>
 <li><strong>Identity and contact:</strong> full name, phone number, email address.</li>
@@ -382,22 +385,25 @@ KVKK = {
 <h2>4. Legal grounds and collection method</h2>
 <p>Data is collected electronically through our website forms and WhatsApp. It is processed under Article 5 of KVKK (necessity for entering into or performing a contract, legitimate interest, legal obligations), and, for transfers abroad, on the basis of your explicit consent under Article 9.</p>
 <h2>5. Transfers</h2>
-<p>We do not sell your data or share it with third parties for advertising. The following providers are used to run the service, and their servers may be located outside Turkey:</p>
+<p>The contact details you share in our forms are never sold or shared with third parties for advertising. The following providers are used to run the service, and their servers may be located outside Turkey:</p>
 <ul>
 <li><strong>Google (Google Sheets / Apps Script):</strong> storing form submissions,</li>
 <li><strong>WhatsApp (Meta):</strong> messaging, if you choose to contact us on WhatsApp,</li>
 <li><strong>GitHub Pages:</strong> website hosting (technical access logs),</li>
-<li><strong>Google Fonts:</strong> loading fonts (technical data such as IP address).</li>
+<li><strong>Google Fonts:</strong> loading fonts (technical data such as IP address),</li>
+<li><strong>Google Analytics and Google Tag Manager:</strong> only if you accept cookies, statistical measurement of site visits,</li>
+<li><strong>Meta Pixel (Meta Platforms):</strong> only if you accept cookies, measuring our ads and showing them to relevant audiences (events such as pages viewed, form submissions or clicks on contact buttons; your name and phone number from forms are not sent to Meta).</li>
 </ul>
 <p>Data may also be shared with authorized public authorities upon request, as permitted by law.</p>
 <h2>6. Cookies and local storage</h2>
-<p>We do not use advertising or analytics cookies. Your language preference and whether you've filled in the sample PDF form are stored only in your browser's local storage so we don't ask again; they are never sent to us. You can clear them in your browser settings at any time.</p>
+<p>We use analytics (Google Analytics) and advertising (Meta Pixel) cookies only with your explicit consent. You can accept or reject them in the notice shown on your first visit; if you reject, these cookies are not set. You can change your choice at any time via the "Cookie settings" link at the bottom of the page.</p>
+<p>Your language preference, your cookie choice, whether you've filled in the sample PDF form and whether you've closed the information boxes on the site are stored only in your browser's local storage so we don't ask again. You can clear them in your browser settings at any time.</p>
 <h2>7. Retention</h2>
 <p>Data is kept for as long as the purpose requires and in any case for the periods set by applicable law, after which it is deleted, destroyed or anonymized.</p>
 <h2>8. Your rights</h2>
 <p>Under Article 11 of KVKK you have the right to learn whether your data is processed, request information about it, learn the purpose and whether it is used accordingly, know the third parties it is transferred to, request correction of incomplete or inaccurate data, request deletion or destruction where conditions are met, request that such actions be notified to third parties, object to outcomes against you arising solely from automated analysis, and claim compensation for damages caused by unlawful processing.</p>
 <h2>9. How to apply</h2>
-<p>Send your request, with information that verifies your identity, to <a href="mailto:{EMAIL}">{EMAIL}</a>. Requests are answered free of charge within 30 days at the latest.</p>
+<p>Send your request, with information that verifies your identity, to <a href="mailto:info.gloriondigital@gmail.com">info.gloriondigital@gmail.com</a>. Requests are answered free of charge within 30 days at the latest.</p>
 """),
 }
 
