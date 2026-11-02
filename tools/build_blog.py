@@ -102,8 +102,8 @@ def head(lang, title, desc, canonical, alt_tr, alt_en, ld, og_type="website"):
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=20261101d">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20261102b">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -119,8 +119,8 @@ def header(lang, alt_tr, alt_en):
       <span class="logo-text">GLORION <small>DIGITAL</small></span>
     </a>
     <nav class="menu" id="menu" aria-label="{t['menu']}">
-      <a href="{anchor(lang, 'egitim')}" class="menu-hot">{t['training']}</a>
       <a href="{anchor(lang, 'hizmetler')}">{t['services']}</a>
+      <a href="{anchor(lang, 'egitim')}">{t['training']}</a>
       <a href="{anchor(lang, 'sss')}">{t['faq']}</a>
       <a href="{blog_url(lang)}" aria-current="page">{t['blog']}</a>
     </nav>
@@ -151,7 +151,7 @@ def footer(lang):
   </div>
 </footer>
 <script src="/nudge.js?v=20261101e" defer></script>
-<script src="/main.js?v=20261030c"></script>
+<script src="/main.js?v=20261102b"></script>
 </body>
 </html>
 '''
@@ -166,6 +166,9 @@ def card(p, lang):
 </a>'''
 
 def write(path, text):
+    # Turkish pages: "İnstagram" with a dotted capital; English pages and URLs stay as they are.
+    if path.suffix == ".html" and "/en/" not in str(path).replace("\\", "/"):
+        text = text.replace("Instagram", "İnstagram")
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
@@ -265,7 +268,7 @@ for lang in ("tr", "en"):
 urls.insert(1, ("/blog/", "/en/blog/"))
 
 # ---- posts.js for homepage cards ----
-data = [{"tr": {"url": post_url(p, "tr"), "title": p["tr"]["title"], "excerpt": p["tr"]["desc"],
+data = [{"tr": {"url": post_url(p, "tr"), "title": p["tr"]["title"].replace("Instagram", "İnstagram"), "excerpt": p["tr"]["desc"].replace("Instagram", "İnstagram"),
                 "tag": p["cat"][0], "date": fmt_date(p["date"], "tr")},
          "en": {"url": post_url(p, "en"), "title": p["en"]["title"], "excerpt": p["en"]["desc"],
                 "tag": p["cat"][1], "date": fmt_date(p["date"], "en")},
@@ -601,7 +604,7 @@ def svc_page(s, lang):
     </div>
   </section>
 </main>
-''' + footer(lang).replace('<script src="/nudge.js', '<script src="/config.js?v=20261101a"></script>\n<script src="/i18n.js?v=20261101a"></script>\n<script src="/nudge.js')
+''' + footer(lang).replace('<script src="/nudge.js', '<script src="/config.js?v=20261101a"></script>\n<script src="/i18n.js?v=20261102b"></script>\n<script src="/nudge.js')
     write(ROOT / url.strip("/") / "index.html", page)
 
 import urllib.parse

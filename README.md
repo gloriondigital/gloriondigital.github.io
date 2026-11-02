@@ -6,7 +6,7 @@ Statik site (HTML/CSS/JS). Türkçe varsayılan, İngilizce desteği var. CRM'de
 
 ## Yapı
 - `index.html` — ana sayfa (TR metinler), `i18n.js` — ana sayfanın İngilizce çevirileri
-- `styles.css`, `main.js` — tasarım, dil geçişi, efektler, form
+- `styles.css`, `home.css` (yalnızca ana sayfa), `main.js` — tasarım, dil geçişi, efektler, form
 - `config.js` — form bağlantısı (`FORM_ENDPOINT`) ve WhatsApp numarası
 - `blog/` (TR) ve `en/blog/` (EN) — **oluşturulan** blog sayfaları, elle düzenlemeyin
 - `tools/posts_data.py` — blog içerikleri; `tools/build_blog.py` — blog, sitemap, robots.txt, llms.txt oluşturucu

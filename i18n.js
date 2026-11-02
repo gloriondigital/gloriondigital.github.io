@@ -22,7 +22,7 @@ const EN = {
   "nav.cta": "Free Consultation",
 
   "hero.eyebrow": "Meta Ads Agency",
-  "hero.title": "We build Meta ad systems that <em>drive sales</em>.",
+  "hero.title": "We build Meta ad systems that drive sales.",
   "hero.lead": "We set up your Instagram and Facebook ads for messages, leads, sign-ups and sales — not just impressions. Strategy, creative, setup and transparent reporting, all in one place.",
   "hero.cta1": "Free Consultation",
   "hero.cta2": "Join the Live Training",
@@ -138,7 +138,7 @@ const EN = {
   "a4": "No. The training moves from basics to practice on your own account, and small classes mean everyone gets attention.",
 
   "contact.title": "Let your ads start driving sales.",
-  "contact.lead": "Fill in the form below for a free consultation or training application and we'll get back to you shortly.",
+  "contact.lead": "Fill in the form for a free consultation or training application and we'll get back to you shortly.",
   "contact.cta1": "Message on WhatsApp",
   "contact.cta2": "Message on Instagram",
   "contact.phone": "Phone",

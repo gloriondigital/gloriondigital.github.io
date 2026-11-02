@@ -21,7 +21,7 @@ const POSTS = [
   "tr": {
    "url": "/blog/one-cikar-mi-reklam-yoneticisi-mi/",
    "title": "“Öne Çıkar” mı, Reklam Yöneticisi mi? Farkı ve doğru seçim",
-   "excerpt": "Instagram'daki Öne Çıkar butonu ile Meta Reklam Yöneticisi arasındaki fark: hedefleme, test, ölçüm ve hangisinin ne zaman kullanılacağı.",
+   "excerpt": "İnstagram'daki Öne Çıkar butonu ile Meta Reklam Yöneticisi arasındaki fark: hedefleme, test, ölçüm ve hangisinin ne zaman kullanılacağı.",
    "tag": "Başlangıç",
    "date": "21 Ekim 2026"
   },

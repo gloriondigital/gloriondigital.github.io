@@ -102,18 +102,6 @@
   onScroll();
 
   if (!reduce && "IntersectionObserver" in window) {
-    const targets = document.querySelectorAll(
-      ".section h2, .section .eyebrow, .card, .steps li, .chip, .compare .col, details, .post-card, .lead-form, .contact-item, .post-cta, .training > div:first-child"
-    );
-    targets.forEach((el, i) => {
-      el.classList.add("reveal");
-      el.style.setProperty("--d", `${(i % 4) * 70}ms`);
-    });
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    targets.forEach(el => io.observe(el));
-
     // Count-up stats
     const counters = document.querySelectorAll("[data-count]");
     const cio = new IntersectionObserver(entries => {
@@ -130,7 +118,7 @@
         cio.unobserve(el);
       });
     }, { threshold: 0.6 });
-    counters.forEach(el => { el.textContent = "0"; cio.observe(el); });
+    counters.forEach(el => cio.observe(el));
   }
 
   // ---------- WhatsApp button follows the scroll (spring) ----------
@@ -245,6 +233,7 @@
     // Hero spotlight + parallax dots
     const hero = document.querySelector(".hero");
     const fx = hero && hero.querySelector(".hero-fx");
+    const art = document.querySelector(".hero-art");
     if (fx) {
       let tx = .7, ty = .3, cx = tx, cy = ty, run = false;
       const loop = () => {
@@ -253,6 +242,7 @@
         fx.style.setProperty("--my", (cy * 100).toFixed(2) + "%");
         fx.style.setProperty("--px", ((cx - .5) * -24).toFixed(2) + "px");
         fx.style.setProperty("--py", ((cy - .5) * -24).toFixed(2) + "px");
+        if (art) { art.style.setProperty("--ax", ((cx - .5) * 16).toFixed(1) + "px"); art.style.setProperty("--ay", ((cy - .5) * 12).toFixed(1) + "px"); }
         if (Math.abs(tx - cx) > .001 || Math.abs(ty - cy) > .001) requestAnimationFrame(loop); else run = false;
       };
       hero.addEventListener("pointermove", e => {
