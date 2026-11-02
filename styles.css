@@ -549,3 +549,10 @@ summary::after { color: var(--gold-text); }
   .burger { display: flex; }
 }
 .svc-other .icon { color: var(--gold-text); }
+
+/* Mouse-follow glow, whole page (added by main.js on devices with a mouse) */
+.mouse-fx { position: fixed; left: -380px; top: -300px; width: 760px; height: 600px; z-index: 30; pointer-events: none; mix-blend-mode: multiply; opacity: 0; transition: opacity .35s; will-change: transform; }
+.mouse-fx.on { opacity: 1; }
+.mouse-spot { position: absolute; inset: 0; background: radial-gradient(closest-side, rgba(224,176,63,.3), transparent); }
+.mouse-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(122,90,16,.42) 1.2px, transparent 1.6px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(closest-side, #000, transparent); mask-image: radial-gradient(closest-side, #000, transparent); }
+@media (prefers-reduced-motion: reduce) { .mouse-fx { display: none; } }

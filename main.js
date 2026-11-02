@@ -230,29 +230,33 @@
   }
 
   if (finePointer && !reduce) {
-    // Hero spotlight + parallax dots
-    const hero = document.querySelector(".hero");
-    const fx = hero && hero.querySelector(".hero-fx");
+    // Gold glow and dot pattern follow the mouse across the whole page
+    const glow = document.createElement("div");
+    glow.className = "mouse-fx";
+    glow.setAttribute("aria-hidden", "true");
+    glow.innerHTML = '<div class="mouse-dots"></div><div class="mouse-spot"></div>';
+    document.body.appendChild(glow);
+    const dots = glow.firstChild;
     const art = document.querySelector(".hero-art");
-    if (fx) {
-      let tx = .7, ty = .3, cx = tx, cy = ty, run = false;
-      const loop = () => {
-        cx += (tx - cx) * .08; cy += (ty - cy) * .08;
-        fx.style.setProperty("--mx", (cx * 100).toFixed(2) + "%");
-        fx.style.setProperty("--my", (cy * 100).toFixed(2) + "%");
-        fx.style.setProperty("--px", ((cx - .5) * -24).toFixed(2) + "px");
-        fx.style.setProperty("--py", ((cy - .5) * -24).toFixed(2) + "px");
-        if (art) { art.style.setProperty("--ax", ((cx - .5) * 16).toFixed(1) + "px"); art.style.setProperty("--ay", ((cy - .5) * 12).toFixed(1) + "px"); }
-        if (Math.abs(tx - cx) > .001 || Math.abs(ty - cy) > .001) requestAnimationFrame(loop); else run = false;
-      };
-      hero.addEventListener("pointermove", e => {
-        const r = hero.getBoundingClientRect();
-        tx = (e.clientX - r.left) / r.width; ty = (e.clientY - r.top) / r.height;
-        if (!run) { run = true; requestAnimationFrame(loop); }
-      });
-      hero.addEventListener("pointerenter", () => fx.classList.add("on"));
-      hero.addEventListener("pointerleave", () => fx.classList.remove("on"));
-    }
+    let tx = 0, ty = 0, cx = 0, cy = 0, run = false, started = false;
+    const loop = () => {
+      cx += (tx - cx) * .12; cy += (ty - cy) * .12;
+      glow.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+      dots.style.backgroundPosition = `${(-cx * 1.04).toFixed(1)}px ${(-cy * 1.04).toFixed(1)}px`;
+      if (art) {
+        art.style.setProperty("--ax", ((cx / innerWidth - .5) * 16).toFixed(1) + "px");
+        art.style.setProperty("--ay", ((cy / innerHeight - .5) * 12).toFixed(1) + "px");
+      }
+      if (Math.abs(tx - cx) > .3 || Math.abs(ty - cy) > .3) requestAnimationFrame(loop); else run = false;
+    };
+    document.addEventListener("pointermove", e => {
+      if (e.pointerType && e.pointerType !== "mouse") return;
+      tx = e.clientX; ty = e.clientY;
+      if (!started) { started = true; cx = tx; cy = ty; }
+      glow.classList.add("on");
+      if (!run) { run = true; requestAnimationFrame(loop); }
+    }, { passive: true });
+    document.documentElement.addEventListener("pointerleave", () => glow.classList.remove("on"));
 
     // 3D tilt + glare on cards
     document.querySelectorAll(".train-card, .card, .level, .post-card, .contact-item, .compare .col").forEach(el => {

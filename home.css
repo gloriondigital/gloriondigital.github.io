@@ -14,9 +14,6 @@
 .home .hero { padding: 0; background: none; }
 .home .hero::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 58%; background: var(--bg-alt); clip-path: polygon(16% 0, 100% 0, 100% 100%, 44% 100%, 8% 24%); z-index: -1; }
 .home .hero h1, .home .hero .lead, .home .hero .hero-cta { animation: none; }
-.home .hero-grid-dots { background-image: radial-gradient(rgba(122,90,16,.38) 1.2px, transparent 1.6px); background-size: 26px 26px; opacity: 0; }
-.home .hero-spot { background: radial-gradient(380px 300px at var(--mx) var(--my), rgba(224,176,63,.28), transparent 72%); opacity: 0; }
-.home .hero-fx.on .hero-spot, .home .hero-fx.on .hero-grid-dots { opacity: 1; }
 .hero-in { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: clamp(40px, 6vw, 80px); }
 .home .hero .lead { margin: 20px 0 28px; max-width: 52ch; }
 .hero-art { display: block; width: 100%; height: auto; transform: translate(var(--ax, 0px), var(--ay, 0px)); transition: transform .25s ease-out; }
