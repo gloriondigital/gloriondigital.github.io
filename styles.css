@@ -147,9 +147,9 @@ details p { color: var(--muted); margin-top: 12px; }
 .ci-label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .ci-value { font-size: 15px; overflow-wrap: anywhere; }
 .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
-.wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 10px 30px -8px rgba(0,0,0,.6); --wy: 0px; --wr: 0deg; --ws: 1; transform: translateY(var(--wy)) rotate(var(--wr)) scale(var(--ws)); will-change: transform; }
+.wa-float { position: fixed; right: 18px; top: calc(50% + 6px); z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; color: #fff; box-shadow: 0 10px 30px -8px rgba(0,0,0,.6); --wy: 0px; --wr: 0deg; --ws: 1; transform: translateY(var(--wy)) rotate(var(--wr)) scale(var(--ws)); will-change: transform; }
 .wa-float:hover { --ws: 1.08; }
-.ig-float { position: fixed; right: 84px; bottom: 18px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); box-shadow: 0 10px 30px -8px rgba(0,0,0,.6); transition: transform .2s; }
+.ig-float { position: fixed; right: 18px; top: calc(50% - 62px); z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); box-shadow: 0 10px 30px -8px rgba(0,0,0,.6); transition: transform .2s; }
 .ig-float:hover { transform: scale(1.08); }
 .wa-float::after { content: ""; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 rgba(37,211,102,.55); animation: wa-ring 2.6s ease-out infinite; pointer-events: none; }
 .wa-float.wa-nudge svg { animation: wa-wiggle .6s ease-in-out; }
