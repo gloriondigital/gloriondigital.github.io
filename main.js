@@ -3,7 +3,14 @@
   const ENDPOINT = (typeof FORM_ENDPOINT !== "undefined" && FORM_ENDPOINT) || "";
   // Analytics/pixel events via GTM dataLayer (no personal data is sent)
   const track = (event, params) => { window.dataLayer = window.dataLayer || []; window.dataLayer.push(Object.assign({ event }, params || {})); };
-  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  // Instagram link clicks → GTM (Meta + Google conversions are set up there)
+  document.addEventListener("click", e => {
+    const a = e.target.closest && e.target.closest('a[href*="instagram.com"]');
+    if (!a) return;
+    const where = a.classList.contains("ig-float") ? "sabit_buton" : a.closest(".footer") ? "footer" : a.closest("#iletisim") ? "iletisim" : "diger";
+    track("instagram_click", { link_location: where, link_url: a.href, page_path: location.pathname });
+  }, true);
+  const esc = s =>String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   // ---------- Blog cards on the homepage (both languages rendered; CSS shows the active one) ----------
   const both = (tr, en) => `<span class="lang-tr">${esc(tr)}</span><span class="lang-en">${esc(en)}</span>`;
