@@ -323,7 +323,7 @@ print(f"Built {len(POSTS)} posts x 2 languages; sitemap {sm.count('<url>')} urls
 # ---------------------------------------------------------------------------
 # KVKK / Privacy pages
 # ---------------------------------------------------------------------------
-LEGAL_UPDATED = "2026-11-01"
+LEGAL_UPDATED = "2026-11-26"
 KVKK = {
  "tr": dict(url="/kvkk/", title="KVKK Aydınlatma Metni",
   desc="Glorion Digital web sitesi üzerinden toplanan kişisel verilerin işlenmesine ilişkin 6698 sayılı KVKK kapsamında aydınlatma metni.",
@@ -354,7 +354,7 @@ KVKK = {
 <li><strong>WhatsApp (Meta):</strong> WhatsApp üzerinden iletişime geçmeyi seçmeniz halinde mesajlaşma,</li>
 <li><strong>GitHub Pages:</strong> web sitesinin barındırılması (teknik erişim kayıtları),</li>
 <li><strong>Google Fonts:</strong> sitedeki yazı tiplerinin yüklenmesi (IP adresi gibi teknik veriler),</li>
-<li><strong>Google Analytics ve Google Etiket Yöneticisi:</strong> yalnızca çerezlere onay vermeniz halinde, site ziyaretlerinin istatistiksel olarak ölçülmesi,</li>
+<li><strong>Google Analytics ve Google Etiket Yöneticisi:</strong> yalnızca çerezlere onay vermeniz halinde, site ziyaretlerinin istatistiksel olarak ölçülmesi. Bu kapsamda Google sinyalleri özelliği açıktır: Google hesabında oturum açmış ve Google ayarlarında reklam kişiselleştirmeye izin vermiş ziyaretçiler için Google, yaş aralığı, cinsiyet ve ilgi alanı gibi bilgileri yalnızca toplu ve anonim istatistik olarak bize raporlar; bu raporlardan kimliğiniz belirlenemez. Google hesabınıza ait bu verileri <a href="https://myactivity.google.com/" target="_blank" rel="noopener">Google Etkinliğim</a> sayfasından görebilir, silebilir veya <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Reklam Ayarları</a>'ndan reklam kişiselleştirmeyi kapatabilirsiniz,</li>
 <li><strong>Meta Pikseli (Meta Platforms):</strong> yalnızca çerezlere onay vermeniz halinde, reklamlarımızın ölçülmesi ve ilgili kitlelere gösterilmesi (ziyaret edilen sayfa, form gönderimi veya iletişim butonuna tıklama gibi olaylar; ad ve telefon gibi form bilgileriniz Meta'ya gönderilmez).</li>
 </ul>
 <p>Ayrıca kanunen yetkili kamu kurum ve kuruluşlarına, talep halinde ve mevzuatın izin verdiği ölçüde aktarım yapılabilir.</p>
@@ -397,7 +397,7 @@ KVKK = {
 <li><strong>WhatsApp (Meta):</strong> messaging, if you choose to contact us on WhatsApp,</li>
 <li><strong>GitHub Pages:</strong> website hosting (technical access logs),</li>
 <li><strong>Google Fonts:</strong> loading fonts (technical data such as IP address),</li>
-<li><strong>Google Analytics and Google Tag Manager:</strong> only if you accept cookies, statistical measurement of site visits,</li>
+<li><strong>Google Analytics and Google Tag Manager:</strong> only if you accept cookies, statistical measurement of site visits. Google signals is enabled for this purpose: for visitors who are signed in to a Google account and have allowed ad personalization, Google reports information such as age range, gender and interests to us only as aggregated, anonymous statistics that cannot identify you. You can view or delete this data in <a href="https://myactivity.google.com/" target="_blank" rel="noopener">Google My Activity</a>, or turn off ad personalization in <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ad Settings</a>,</li>
 <li><strong>Meta Pixel (Meta Platforms):</strong> only if you accept cookies, measuring our ads and showing them to relevant audiences (events such as pages viewed, form submissions or clicks on contact buttons; your name and phone number from forms are not sent to Meta).</li>
 </ul>
 <p>Data may also be shared with authorized public authorities upon request, as permitted by law.</p>
