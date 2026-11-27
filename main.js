@@ -350,15 +350,45 @@
       try {
         // Apps Script web apps don't return CORS headers; no-cors still delivers the request.
         await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) });
-        form.reset();
         show(t("form.ok"), "ok");
-        track("lead_form_submit", { form_name: "on_gorusme", service: data.service, sector: data.sector });
+        // The conversion is counted once, on the thank-you page (see below), not here.
+        // The same phone number sent again within 24 hours is marked as a duplicate and not counted.
+        const key = phone.replace(/\D/g, "").slice(-10);
+        let dup = false;
+        try {
+          const last = JSON.parse(localStorage.getItem("gd-lead-last") || "null");
+          dup = !!(last && last.k === key && Date.now() - last.ts < 864e5);
+          localStorage.setItem("gd-lead-last", JSON.stringify({ k: key, ts: Date.now() }));
+        } catch (e) {}
+        const lead = { form_name: "on_gorusme", service: data.service, sector: data.sector, dup,
+                       ts: Date.now(), lead_id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8) };
+        let stored = false;
+        try { sessionStorage.setItem("gd-lead", JSON.stringify(lead)); stored = true; } catch (e) {}
+        if (stored) {
+          location.assign("/tesekkurler/" + (current === "en" ? "?lang=en" : ""));
+          return;
+        }
+        // Storage blocked (rare): count here and stay on the page.
+        form.reset();
+        if (!dup) track("lead_form_submit", { form_name: lead.form_name, service: lead.service, sector: lead.sector, lead_id: lead.lead_id });
       } catch (e) {
         show(t("form.fail"), "err");
       } finally {
         btn.disabled = false;
       }
     });
+  }
+
+  // ---------- Thank-you page: count the lead exactly once ----------
+  // Only a visit that comes straight from a successful form submission counts.
+  // Refreshing, opening the URL directly, going back, or a repeat submission is not counted again.
+  if (document.body.dataset.page === "tesekkurler") {
+    let lead = null;
+    try { lead = JSON.parse(sessionStorage.getItem("gd-lead") || "null"); sessionStorage.removeItem("gd-lead"); } catch (e) {}
+    if (lead && Date.now() - lead.ts < 15 * 60 * 1000) {
+      const p = { form_name: lead.form_name, service: lead.service, sector: lead.sector, lead_id: lead.lead_id };
+      track(lead.dup ? "lead_form_duplicate" : "lead_form_submit", p);
+    }
   }
 
   // ---------- Cookie consent (KVKK) — drives Google Consent Mode v2 set in <head> ----------
