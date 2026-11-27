@@ -360,12 +360,12 @@
           dup = !!(last && last.k === key && Date.now() - last.ts < 864e5);
           localStorage.setItem("gd-lead-last", JSON.stringify({ k: key, ts: Date.now() }));
         } catch (e) {}
-        const lead = { form_name: "on_gorusme", service: data.service, sector: data.sector, dup,
+        const lead = { form_name: form.dataset.formName || "on_gorusme", service: data.service, sector: data.sector, dup,
                        ts: Date.now(), lead_id: Date.now().toString(36) + Math.random().toString(36).slice(2, 8) };
         let stored = false;
         try { sessionStorage.setItem("gd-lead", JSON.stringify(lead)); stored = true; } catch (e) {}
         if (stored) {
-          location.assign("/tesekkurler/" + (current === "en" ? "?lang=en" : ""));
+          location.assign("/tesekkurler/" + ((form.dataset.lang || current) === "en" ? "?lang=en" : ""));
           return;
         }
         // Storage blocked (rare): count here and stay on the page.
