@@ -2,6 +2,23 @@
 const POSTS = [
  {
   "tr": {
+   "url": "/blog/anaokulu-reklami-nasil-yapilir/",
+   "title": "Anaokulu reklamı nasıl yapılır? Adım adım Meta rehberi",
+   "excerpt": "Anaokulu reklamı nasıl yapılır? Meta Reklam Yöneticisi'nde hedef seçimi, okul çevresi lokasyonu, veli kitlesi, kreatif, mesaj akışı ve ölçüm adım adım.",
+   "tag": "Anaokulları",
+   "date": "27 Kasım 2026"
+  },
+  "en": {
+   "url": "/en/blog/how-to-advertise-to-parents/",
+   "title": "How to advertise to parents: a preschool Meta ads guide",
+   "excerpt": "How to advertise to parents with Meta ads: choose the right objective, target the area around your school, build a parent audience and track enrollments.",
+   "tag": "Preschools",
+   "date": "November 27, 2026"
+  },
+  "minutes": 6
+ },
+ {
+  "tr": {
    "url": "/blog/reklam-gosterim-aliyor-mesaj-gelmiyor/",
    "title": "Reklamınız gösterim alıyor ama mesaj gelmiyor mu? 5 olası sebep",
    "excerpt": "Meta reklamlarında yüksek gösterime rağmen mesaj gelmemesinin en yaygın 5 sebebi: yanlış kampanya hedefi, geniş kitle, net olmayan teklif, kreatif kopukluğu ve geç dönüş.",
@@ -10,8 +27,8 @@ const POSTS = [
   },
   "en": {
    "url": "/en/blog/ad-gets-impressions-but-no-messages/",
-   "title": "Your ad gets impressions but no messages? 5 likely reasons",
-   "excerpt": "The 5 most common reasons Meta ads get impressions but no messages: wrong campaign objective, broad audience, unclear offer, mismatched creative and slow replies.",
+   "title": "Meta ad gets impressions but no messages? 5 fixes",
+   "excerpt": "Facebook or Instagram ad getting impressions but no messages or clicks? Check these 5 causes in order: objective, audience, offer, creative and reply speed.",
    "tag": "Meta Ads",
    "date": "October 28, 2026"
   },
@@ -27,8 +44,8 @@ const POSTS = [
   },
   "en": {
    "url": "/en/blog/boost-or-ads-manager/",
-   "title": "“Boost” or Ads Manager? The difference and the right choice",
-   "excerpt": "The difference between Instagram's Boost button and Meta Ads Manager: targeting, testing, measurement and when to use which.",
+   "title": "Boost post vs Ads Manager: which gets better results?",
+   "excerpt": "Boost post or Meta Ads Manager? Compare objectives, targeting, testing and tracking, and see when boosting a Facebook or Instagram post is enough.",
    "tag": "Basics",
    "date": "October 21, 2026"
   },

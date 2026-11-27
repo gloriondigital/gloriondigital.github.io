@@ -559,3 +559,11 @@ summary::after { color: var(--gold-text); }
 .mouse-spot { position: absolute; inset: 0; background: radial-gradient(closest-side, rgba(224,176,63,.3), transparent); }
 .mouse-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(122,90,16,.42) 1.2px, transparent 1.6px); background-size: 26px 26px; -webkit-mask-image: radial-gradient(closest-side, #000, transparent); mask-image: radial-gradient(closest-side, #000, transparent); }
 @media (prefers-reduced-motion: reduce) { .mouse-fx { display: none; } }
+/* blog: numbered steps, sub-headings, tables, external source links */
+.prose ol { margin: 0 0 18px 22px; display: grid; gap: 10px; }
+.prose h3 { font-size: 21px; margin: 28px 0 10px; }
+.prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 0 0 22px; font-size: 16px; line-height: 1.5; }
+.prose th, .prose td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; min-width: 96px; }
+@media (max-width: 600px) { .prose table { font-size: 14.5px; } .prose th, .prose td { padding: 8px; } }
+.prose thead th { background: var(--bg-alt); }
+.prose a:not(.kw) { color: var(--gold-text, var(--gold-2)); text-decoration: underline; text-underline-offset: 3px; }
