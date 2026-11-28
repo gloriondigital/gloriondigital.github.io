@@ -284,8 +284,8 @@ POSTS = [
   },
   "en": {
     "slug": "ad-gets-impressions-but-no-messages",
-    "title": "Meta ad impressions but no messages or clicks? 5 fixes",
-    "desc": "Facebook or Instagram ad getting impressions but no messages or clicks? Fix these 5 causes in order, from objective to reply speed, before raising your budget.",
+    "title": "Meta ad gets impressions but no messages? 5 fixes",
+    "desc": "Facebook or Instagram ad getting impressions but no messages or clicks? Check these 5 causes in order: objective, audience, offer, creative and reply speed.",
     "answer": "If your Meta ad gets lots of impressions but no messages, the problem is usually the setup, not the budget. The 5 most common causes: choosing awareness or engagement instead of the Messages objective, an oversized audience, an unclear offer, visuals and copy saying different things, and replying to messages too slowly.",
     "body": """
 <p>You see thousands of impressions in Ads Manager, yet the phone stays quiet and your DMs are empty. We see this in almost every new account. The good news: the problem is usually not the budget, but one link in your [[services|Meta ads]] setup.</p>

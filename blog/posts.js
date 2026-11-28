@@ -44,8 +44,8 @@ const POSTS = [
   },
   "en": {
    "url": "/en/blog/ad-gets-impressions-but-no-messages/",
-   "title": "Meta ad impressions but no messages or clicks? 5 fixes",
-   "excerpt": "Facebook or Instagram ad getting impressions but no messages or clicks? Fix these 5 causes in order, from objective to reply speed, before raising your budget.",
+   "title": "Meta ad gets impressions but no messages? 5 fixes",
+   "excerpt": "Facebook or Instagram ad getting impressions but no messages or clicks? Check these 5 causes in order: objective, audience, offer, creative and reply speed.",
    "tag": "Meta Ads",
    "date": "October 28, 2026"
   },
