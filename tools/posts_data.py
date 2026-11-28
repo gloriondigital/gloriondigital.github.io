@@ -13,6 +13,133 @@ Inline link placeholders (resolved per language):
 
 POSTS = [
 {
+  "key": "gosterilmiyor",
+  "date": "2026-11-28",
+  "minutes": 6,
+  "cat": ("Meta Reklamları", "Meta Ads"),
+  "related": ["mesaj-gelmiyor", "one-cikar", "anaokulu-rehber"],
+  "tr": {
+    "slug": "reklam-aktif-ama-gosterilmiyor",
+    "title": "Reklamınız canlı ama gösterilmiyor mu? 7 sebep ve çözüm",
+    "desc": "Meta reklamınız aktif görünüyor ama gösterim almıyor mu? İnceleme, ret, ödeme, düşük bütçe, dar kitle, teklif sınırı ve takvim için adım adım kontrol listesi.",
+    "answer": "Reklam Yöneticisi'nde reklamınız aktif görünüyor ama gösterim almıyorsa önce Teslimat sütununa bakın: reklam incelemede, reddedilmiş ya da kısıtlanmış olabilir. Sorun yoksa sırasıyla ödeme yöntemini, bütçenin yeterliliğini, kitlenin çok dar olup olmadığını, teklif sınırını ve kampanya, reklam seti, reklam düzeylerinin takvimini kontrol edin.",
+    "body": """
+<p>“Reklamı açtım, durumu aktif yazıyor ama bir gündür tek gösterim yok.” Bu mesajı haftada birkaç kez alıyoruz. Gösterim alıp mesaj getirmeyen reklam ayrı bir sorundur; onu [[post:mesaj-gelmiyor|reklam gösterim alıyor ama mesaj gelmiyorsa bakılacak 5 sebep]] yazımızda anlattık. Bu yazı bir adım öncesiyle, yani reklamın hiç ya da neredeyse hiç gösterilmemesiyle ilgili.</p>
+<h2>Reklamın gerçekten yayında olup olmadığını nasıl anlarsınız?</h2>
+<p>Reklam Yöneticisi'nde kampanya, reklam seti ve reklam ayrı ayrı açılıp kapatılabilir. Bir reklamın yayına girmesi için üç düzeyin de açık olması gerekir. Ardından her düzeyde <strong>Teslimat</strong> sütununa bakın: “İncelemede”, “Reddedildi”, “Öğrenme sınırlı” ya da “Bütçe çok düşük” gibi ifadeler sorunun nerede olduğunu çoğu zaman doğrudan söyler. Meta, yavaşlayan ya da duran kampanyalar için ayrı bir sorun giderme rehberi yayımlıyor (<a href="https://www.facebook.com/business/help/388669258876309" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>).</p>
+<h2>Reklam neden gösterilmiyor? En sık 7 sebep</h2>
+<table>
+<thead><tr><th>Sebep</th><th>Nerede görürsünüz?</th><th>Ne yapmalı?</th></tr></thead>
+<tbody>
+<tr><td>1. Reklam incelemede</td><td>Teslimat: İncelemede</td><td>Bekleyin, bu sırada reklamı düzenlemeyin</td></tr>
+<tr><td>2. Reklam reddedildi veya kısıtlandı</td><td>Teslimat: Reddedildi, Hesap Kalitesi</td><td>Politika gerekçesini okuyun, düzeltin ya da inceleme isteyin</td></tr>
+<tr><td>3. Ödeme sorunu</td><td>Faturalandırma ve ödemeler</td><td>Kartı veya ödenmemiş bakiyeyi kontrol edin</td></tr>
+<tr><td>4. Bütçe çok düşük</td><td>Teslimat uyarısı</td><td>Bütçeyi artırın ya da reklam setlerini birleştirin</td></tr>
+<tr><td>5. Kitle çok dar</td><td>Kitle tanımı göstergesi</td><td>Lokasyonu ve hariç tutmaları gözden geçirin</td></tr>
+<tr><td>6. Teklif sınırı çok düşük</td><td>Reklam seti teklif stratejisi</td><td>Sınırı yükseltin ya da en düşük maliyete dönün</td></tr>
+<tr><td>7. Takvim veya kapalı düzey</td><td>Başlangıç ve bitiş tarihleri</td><td>Tarihleri ve üç düzeyin açık olduğunu kontrol edin</td></tr>
+</tbody>
+</table>
+<h3>1. Reklam hâlâ incelemede</h3>
+<p>Her reklam yayına girmeden önce Meta'nın reklam standartlarına göre incelenir; bu süreçte durum “İncelemede” görünür (<a href="https://www.facebook.com/business/help/204798856225114" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>). İnceleme süresi değişebilir. Beklerken görsel, metin ya da hedef değiştirmek reklamı yeniden incelemeye gönderebileceği için acele düzenlemeden kaçının.</p>
+<h3>2. Reklam reddedildi ya da hesap kısıtlandı</h3>
+<p>Reklam <a href="https://transparency.meta.com/policies/ad-standards/" target="_blank" rel="noopener">Meta Reklam Standartları</a>'na uymuyorsa reddedilir ve hiç gösterilmez. Ret gerekçesi reklamın yanında ve Hesap Kalitesi ekranında yazar. Gerekçe hatalıysa yeniden inceleme isteyebilirsiniz; Meta politika uygulamalarını ve itiraz yollarını ayrıca açıklıyor (<a href="https://www.facebook.com/business/help/505720160452817" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>).</p>
+<h3>3. Ödeme yönteminde sorun var</h3>
+<p>Kart reddedildiyse ya da hesapta ödenmemiş bakiye varsa reklamlar durur. Faturalandırma ekranında uyarı olup olmadığına bakın; kartın internet alışverişine ve yurt dışı işlemlere açık olduğunu bankanızla teyit edin.</p>
+<h3>4. Bütçe, hedeflenen sonuç için çok düşük</h3>
+<p>Meta, bütçe seçtiğiniz optimizasyon hedefi için yetersiz kaldığında “Bütçe çok düşük” uyarısı gösterir (<a href="https://www.facebook.com/business/help/1870791083202806" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>). Küçük bir bütçeyi birçok reklam setine bölmek bu sorunu büyütür; önce setleri birleştirmeyi deneyin.</p>
+<h3>5. Kitle gereğinden dar</h3>
+<p>Çok küçük bir lokasyon, üst üste eklenmiş ilgi alanları ve geniş hariç tutma listeleri birleşince gösterilecek kimse kalmayabilir. Meta, düşük teslimat yaşayan kampanyalar için kitleyi genişletmeyi öneriyor (<a href="https://www.facebook.com/business/help/1726703664294651" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>). Yerel işletmelerde dengeyi nasıl kurduğumuzu [[post:anaokulu-rehber|anaokulu reklamı nasıl yapılır rehberimizde]] okul çevresi örneğiyle anlattık.</p>
+<h3>6. Teklif sınırı ya da maliyet hedefi çok düşük</h3>
+<p>Teklif sınırı kullanıyorsanız ve sınır, açık artırmada kazanmak için gereken seviyenin altındaysa reklam gösterilmeyebilir. Meta teklif sınırı için en iyi uygulamaları ayrıca paylaşıyor (<a href="https://www.facebook.com/business/help/586282251886816" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>). Emin değilseniz önce en düşük maliyet stratejisiyle başlayın.</p>
+<h3>7. Takvim ya da kapalı bir düzey</h3>
+<p>Başlangıç tarihi ileri bir güne ayarlanmış, bitiş tarihi geçmiş ya da reklam takvimi yalnızca belirli saatlere sınırlanmış olabilir. Kampanya açık ama reklam seti kapalıysa da reklam yayına girmez.</p>
+<h2>Adım adım kontrol listesi</h2>
+<ol>
+<li>Kampanya, reklam seti ve reklamın üçünün de açık olduğunu doğrulayın.</li>
+<li>Her düzeyde Teslimat sütununu okuyun; uyarının üzerine gelip açıklamasına bakın.</li>
+<li>Hesap Kalitesi ekranında ret veya kısıtlama olup olmadığını kontrol edin.</li>
+<li>Faturalandırma ekranında ödeme uyarısı olup olmadığına bakın.</li>
+<li>Bütçeyi ve reklam seti sayısını gözden geçirin.</li>
+<li>Kitle tanımını, lokasyon yarıçapını ve hariç tutmaları kontrol edin.</li>
+<li>Teklif stratejisini ve tarihleri kontrol edin.</li>
+</ol>
+<h2>Reklam yayında ama çok az gösterim alıyorsa ne olur?</h2>
+<p>Reklam setinde “Öğrenme sınırlı” yazıyorsa Meta, reklam setinin teslimatı istikrarlı hâle getirmeye yetecek kadar sonuç alamadığını söylüyor demektir (<a href="https://www.facebook.com/business/help/269269737396981" target="_blank" rel="noopener">Meta İşletme Yardım Merkezi</a>). Bu durumda çözüm genellikle reklam setlerini birleştirmek, kitleyi genişletmek ya da daha sık gerçekleşen bir sonuç için optimize etmektir. Sık sık küçük düzenleme yapmak da öğrenmeyi baştan başlatabilir.</p>
+<h2>Öne Çıkar ile verdiğim reklam neden gösterilmiyor?</h2>
+<p>Öne Çıkar ile verilen reklamlar da aynı inceleme, ödeme ve bütçe kurallarına tabidir; ancak teslimatı ayrıntılı izleyecek araçlar sınırlıdır. Sorun tekrar ediyorsa [[post:one-cikar|Öne Çıkar ile Reklam Yöneticisi arasındaki farka]] bakmanızı öneririz.</p>
+<h2>Ne zaman destek almalısınız?</h2>
+<p>Bu listedeki her şey yerinde olduğu hâlde reklam gösterilmiyorsa sorun hesap düzeyinde olabilir. Hesabınıza birlikte bakmak isterseniz [[services|Meta reklam yönetimi hizmetimizi]] inceleyebilirsiniz; bu kontrolleri kendi hesabınızda öğrenmek isterseniz [[training|canlı Meta reklam eğitimimizde]] eğitmenle birlikte yapıyoruz.</p>
+""",
+    "faq": [
+      ("Reklamım aktif ama neden gösterim almıyor?", "En sık sebepler reklamın hâlâ incelemede olması, reddedilmesi, ödeme sorunu, çok düşük bütçe, çok dar kitle, düşük teklif sınırı ve yanlış takvimdir. Teslimat sütunu sorunun hangisi olduğunu çoğu zaman gösterir."),
+      ("Meta reklam incelemesi ne kadar sürer?", "Süre reklama ve yoğunluğa göre değişir. Reklam incelemedeyken düzenleme yapmak onu yeniden incelemeye gönderebileceği için beklemek daha doğrudur."),
+      ("Reddedilen Meta reklamı için ne yapabilirim?", "Ret gerekçesini reklamın yanında ve Hesap Kalitesi ekranında okuyun. Reklamı politikaya uygun hâle getirin ya da kararın hatalı olduğunu düşünüyorsanız yeniden inceleme isteyin."),
+      ("“Öğrenme sınırlı” reklamın gösterilmediği anlamına mı gelir?", "Hayır. Reklam yayındadır ama reklam seti teslimatı istikrarlı hâle getirmeye yetecek kadar sonuç alamıyordur. Setleri birleştirmek veya kitleyi genişletmek genellikle yardımcı olur."),
+    ],
+  },
+  "en": {
+    "slug": "facebook-ad-active-but-not-delivering",
+    "title": "Facebook ad active but not delivering? 7 causes and fixes",
+    "desc": "Meta ad says active but gets no impressions? Check ad review, rejection, payment, low budget, narrow audience, bid cap and schedule with this step-by-step list.",
+    "answer": "If your Meta ad shows as active but gets no impressions, start with the Delivery column: the ad may be in review, rejected or restricted. If not, check in order your payment method, whether the budget is enough, whether the audience is too narrow, your bid cap, and the schedule and on/off status at campaign, ad set and ad level.",
+    "body": """
+<p>“The ad is live, it says active, but it hasn't had a single impression all day.” We get this message several times a week. An ad that gets impressions but no messages is a different problem, covered in our guide on [[post:mesaj-gelmiyor|why ads get impressions but no messages]]. This one is about the step before that: an ad that isn't delivering at all, or barely.</p>
+<h2>How can you tell whether your ad is really running?</h2>
+<p>In Ads Manager, the campaign, ad set and ad each have their own on/off switch, and all three must be on for the ad to run. Then read the <strong>Delivery</strong> column at each level: labels such as “In review”, “Rejected”, “Learning limited” or “Budget too low” usually point straight at the problem. Meta also has a dedicated troubleshooting guide for campaigns that slow down or stop (<a href="https://www.facebook.com/business/help/388669258876309" target="_blank" rel="noopener">Meta Business Help Center</a>).</p>
+<h2>Why is my ad not delivering? The 7 most common causes</h2>
+<table>
+<thead><tr><th>Cause</th><th>Where you see it</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>1. Ad in review</td><td>Delivery: In review</td><td>Wait, and don't edit the ad meanwhile</td></tr>
+<tr><td>2. Ad rejected or restricted</td><td>Delivery: Rejected, Account Quality</td><td>Read the policy reason, fix it or request a review</td></tr>
+<tr><td>3. Payment issue</td><td>Billing and payments</td><td>Check the card or any unpaid balance</td></tr>
+<tr><td>4. Budget too low</td><td>Delivery warning</td><td>Raise the budget or merge ad sets</td></tr>
+<tr><td>5. Audience too narrow</td><td>Audience definition gauge</td><td>Review location and exclusions</td></tr>
+<tr><td>6. Bid cap too low</td><td>Ad set bid strategy</td><td>Raise the cap or switch to lowest cost</td></tr>
+<tr><td>7. Schedule or a switched-off level</td><td>Start and end dates</td><td>Check dates and that all three levels are on</td></tr>
+</tbody>
+</table>
+<h3>1. The ad is still in review</h3>
+<p>Every ad is reviewed against Meta's standards before it runs, and its status shows “In review” in the meantime (<a href="https://www.facebook.com/business/help/204798856225114" target="_blank" rel="noopener">Meta Business Help Center</a>). Review times vary. Editing the image, copy or targeting can send the ad back into review, so avoid rushed changes.</p>
+<h3>2. The ad was rejected or the account is restricted</h3>
+<p>Ads that don't meet the <a href="https://transparency.meta.com/policies/ad-standards/" target="_blank" rel="noopener">Meta Advertising Standards</a> are rejected and won't run. The reason appears next to the ad and in Account Quality. If you think the decision is wrong, you can request another review; Meta explains how it enforces ad policies and how appeals work (<a href="https://www.facebook.com/business/help/505720160452817" target="_blank" rel="noopener">Meta Business Help Center</a>).</p>
+<h3>3. There's a payment problem</h3>
+<p>If the card was declined or there's an unpaid balance, ads stop. Check Billing for warnings and confirm with your bank that the card allows online and international payments.</p>
+<h3>4. The budget is too low for the result you chose</h3>
+<p>Meta shows a “Budget too low” warning when the budget isn't enough for the optimization goal (<a href="https://www.facebook.com/business/help/1870791083202806" target="_blank" rel="noopener">Meta Business Help Center</a>). Splitting a small budget across many ad sets makes this worse, so try merging them first.</p>
+<h3>5. The audience is too narrow</h3>
+<p>A tiny location, stacked interests and long exclusion lists can leave almost no one to show the ad to. For under-delivering campaigns, Meta suggests broadening the audience (<a href="https://www.facebook.com/business/help/1726703664294651" target="_blank" rel="noopener">Meta Business Help Center</a>). We show how to balance this for a local business in our [[post:anaokulu-rehber|guide to advertising a preschool to parents]].</p>
+<h3>6. The bid cap or cost goal is too low</h3>
+<p>If you use a bid cap and it sits below what it takes to win the auction, the ad may not be shown. Meta publishes best practices for bid caps (<a href="https://www.facebook.com/business/help/586282251886816" target="_blank" rel="noopener">Meta Business Help Center</a>). If you're unsure, start with the lowest cost strategy.</p>
+<h3>7. The schedule, or one level is switched off</h3>
+<p>The start date may be set in the future, the end date may have passed, or the ad schedule may be limited to certain hours. If the campaign is on but the ad set is off, the ad won't run either.</p>
+<h2>A step-by-step checklist</h2>
+<ol>
+<li>Confirm the campaign, ad set and ad are all switched on.</li>
+<li>Read the Delivery column at each level and hover over any warning.</li>
+<li>Check Account Quality for rejections or restrictions.</li>
+<li>Look for payment warnings in Billing.</li>
+<li>Review the budget and the number of ad sets.</li>
+<li>Check the audience definition, location radius and exclusions.</li>
+<li>Check the bid strategy and the dates.</li>
+</ol>
+<h2>What if the ad is running but gets very few impressions?</h2>
+<p>If the ad set says “Learning limited”, Meta is telling you it isn't getting enough results to stabilize delivery (<a href="https://www.facebook.com/business/help/269269737396981" target="_blank" rel="noopener">Meta Business Help Center</a>). The usual fixes are merging ad sets, broadening the audience or optimizing for a result that happens more often. Frequent small edits can also restart learning.</p>
+<h2>Why isn't my boosted post delivering?</h2>
+<p>Boosted posts follow the same review, payment and budget rules, but you get fewer tools to see what's wrong. If it keeps happening, read our comparison of [[post:one-cikar|Boost vs Ads Manager]].</p>
+<h2>When should you get help?</h2>
+<p>If everything on this list checks out and the ad still won't run, the issue may be at account level. If you'd like us to look at it with you, see our [[services|Meta ads management service]]; if you'd rather learn these checks on your own account, we do them together in our [[training|live Meta ads training]].</p>
+""",
+    "faq": [
+      ("Why is my Facebook ad active but not getting impressions?", "The most common causes are the ad still being in review, a rejection, a payment issue, a budget that's too low, an audience that's too narrow, a low bid cap or the wrong schedule. The Delivery column usually tells you which one it is."),
+      ("How long does Meta ad review take?", "It varies by ad and by volume. Editing an ad while it's in review can send it back into review, so waiting is usually the better choice."),
+      ("What can I do if my Meta ad is rejected?", "Read the reason next to the ad and in Account Quality. Bring the ad in line with the policy, or request another review if you think the decision was wrong."),
+      ("Does “Learning limited” mean my ad isn't delivering?", "No. The ad is running, but the ad set isn't getting enough results to stabilize delivery. Merging ad sets or broadening the audience usually helps."),
+    ],
+  },
+},
+{
   "key": "anaokulu-rehber",
   "date": "2026-11-27",
   "minutes": 6,
@@ -126,9 +253,10 @@ POSTS = [
 {
   "key": "mesaj-gelmiyor",
   "date": "2026-10-28",
+  "updated": "2026-11-28",
   "minutes": 4,
   "cat": ("Meta Reklamları", "Meta Ads"),
-  "related": ["one-cikar", "anaokulu"],
+  "related": ["gosterilmiyor", "one-cikar", "anaokulu"],
   "tr": {
     "slug": "reklam-gosterim-aliyor-mesaj-gelmiyor",
     "title": "Reklamınız gösterim alıyor ama mesaj gelmiyor mu? 5 olası sebep",
@@ -147,7 +275,7 @@ POSTS = [
 <h2>5. Gelen mesajlara ne kadar hızlı dönüyorsunuz?</h2>
 <p>Reklam işini yaptıysa top artık sizdedir. Saatler sonra dönülen bir mesaj çoğu zaman kaybedilmiş bir müşteridir. Otomatik karşılama mesajı ve hazır cevaplar bu açığı kapatır.</p>
 <h2>Önce neyi kontrol etmeli?</h2>
-<p>Sırasıyla hedefi, kitleyi ve teklifi kontrol edin. Hangisinin aksadığından emin değilseniz hesabınıza birlikte bakabiliriz; kendi hesabınızda öğrenmek isterseniz [[training|canlı Meta reklam eğitimimiz]] tam bu sorular üzerine kurulu.</p>
+<p>Sırasıyla hedefi, kitleyi ve teklifi kontrol edin. Reklamınız hiç gösterim almıyorsa sorun başka bir yerdedir; o durum için [[post:gosterilmiyor|reklam aktif ama gösterilmiyorsa bakılacak 7 sebebi]] anlattık. Hangisinin aksadığından emin değilseniz hesabınıza birlikte bakabiliriz; kendi hesabınızda öğrenmek isterseniz [[training|canlı Meta reklam eğitimimiz]] tam bu sorular üzerine kurulu.</p>
 """,
     "faq": [
       ("Meta reklamında mesaj almak için hangi kampanya hedefi seçilmeli?", "Mesaj almak için Etkileşim hedefi altında Mesajlar seçeneği, form toplamak için Potansiyel Müşteri hedefi seçilmelidir. Bilinirlik hedefi mesaj için optimize etmez."),
@@ -156,8 +284,8 @@ POSTS = [
   },
   "en": {
     "slug": "ad-gets-impressions-but-no-messages",
-    "title": "Meta ad gets impressions but no messages? 5 fixes",
-    "desc": "Facebook or Instagram ad getting impressions but no messages or clicks? Check these 5 causes in order: objective, audience, offer, creative and reply speed.",
+    "title": "Meta ad impressions but no messages or clicks? 5 fixes",
+    "desc": "Facebook or Instagram ad getting impressions but no messages or clicks? Fix these 5 causes in order, from objective to reply speed, before raising your budget.",
     "answer": "If your Meta ad gets lots of impressions but no messages, the problem is usually the setup, not the budget. The 5 most common causes: choosing awareness or engagement instead of the Messages objective, an oversized audience, an unclear offer, visuals and copy saying different things, and replying to messages too slowly.",
     "body": """
 <p>You see thousands of impressions in Ads Manager, yet the phone stays quiet and your DMs are empty. We see this in almost every new account. The good news: the problem is usually not the budget, but one link in your [[services|Meta ads]] setup.</p>
@@ -172,7 +300,7 @@ POSTS = [
 <h2>5. How fast do you reply?</h2>
 <p>Once the ad has done its job, the ball is in your court. A message answered hours later is often a lost customer. An automatic greeting and saved replies close that gap.</p>
 <h2>What should you check first?</h2>
-<p>Check the objective, then the audience, then the offer. Not sure which one is off? We can look at your account together — or learn it on your own account in our [[training|live Meta ads training]], built around exactly these questions.</p>
+<p>Check the objective, then the audience, then the offer. If your ad gets no impressions at all, the problem lies elsewhere; see [[post:gosterilmiyor|7 reasons an active Meta ad isn't delivering]]. Not sure which one is off? We can look at your account together — or learn it on your own account in our [[training|live Meta ads training]], built around exactly these questions.</p>
 """,
     "faq": [
       ("Which campaign objective should I use to get messages from Meta ads?", "Use Engagement with the Messages option to get messages, or the Leads objective to collect forms. The Awareness objective does not optimize for messages."),
@@ -185,7 +313,7 @@ POSTS = [
   "date": "2026-10-21",
   "minutes": 3,
   "cat": ("Başlangıç", "Basics"),
-  "related": ["mesaj-gelmiyor", "anaokulu"],
+  "related": ["mesaj-gelmiyor", "gosterilmiyor", "anaokulu"],
   "tr": {
     "slug": "one-cikar-mi-reklam-yoneticisi-mi",
     "title": "“Öne Çıkar” mı, Reklam Yöneticisi mi? Farkı ve doğru seçim",

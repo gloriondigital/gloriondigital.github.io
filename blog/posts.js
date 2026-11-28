@@ -2,6 +2,23 @@
 const POSTS = [
  {
   "tr": {
+   "url": "/blog/reklam-aktif-ama-gosterilmiyor/",
+   "title": "Reklamınız canlı ama gösterilmiyor mu? 7 sebep ve çözüm",
+   "excerpt": "Meta reklamınız aktif görünüyor ama gösterim almıyor mu? İnceleme, ret, ödeme, düşük bütçe, dar kitle, teklif sınırı ve takvim için adım adım kontrol listesi.",
+   "tag": "Meta Reklamları",
+   "date": "28 Kasım 2026"
+  },
+  "en": {
+   "url": "/en/blog/facebook-ad-active-but-not-delivering/",
+   "title": "Facebook ad active but not delivering? 7 causes and fixes",
+   "excerpt": "Meta ad says active but gets no impressions? Check ad review, rejection, payment, low budget, narrow audience, bid cap and schedule with this step-by-step list.",
+   "tag": "Meta Ads",
+   "date": "November 28, 2026"
+  },
+  "minutes": 6
+ },
+ {
+  "tr": {
    "url": "/blog/anaokulu-reklami-nasil-yapilir/",
    "title": "Anaokulu reklamı nasıl yapılır? Adım adım Meta rehberi",
    "excerpt": "Anaokulu reklamı nasıl yapılır? Meta Reklam Yöneticisi'nde hedef seçimi, okul çevresi lokasyonu, veli kitlesi, kreatif, mesaj akışı ve ölçüm adım adım.",
@@ -27,8 +44,8 @@ const POSTS = [
   },
   "en": {
    "url": "/en/blog/ad-gets-impressions-but-no-messages/",
-   "title": "Meta ad gets impressions but no messages? 5 fixes",
-   "excerpt": "Facebook or Instagram ad getting impressions but no messages or clicks? Check these 5 causes in order: objective, audience, offer, creative and reply speed.",
+   "title": "Meta ad impressions but no messages or clicks? 5 fixes",
+   "excerpt": "Facebook or Instagram ad getting impressions but no messages or clicks? Fix these 5 causes in order, from objective to reply speed, before raising your budget.",
    "tag": "Meta Ads",
    "date": "October 28, 2026"
   },
